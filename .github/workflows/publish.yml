@@ -21,6 +21,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: registry-index
@@ -29,6 +31,11 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Deploy Pages from this same job — a commit pushed with GITHUB_TOKEN does
+    # NOT trigger pages.yml (GitHub's recursion guard), so we deploy inline.
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -84,3 +91,12 @@ jobs:
           fi
           git commit -m "registry: ${{ steps.in.outputs.id }} ${{ steps.in.outputs.version }} (${{ steps.in.outputs.os }}/${{ steps.in.outputs.arch }})"
           git push
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
