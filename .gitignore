@@ -1,0 +1,6 @@
+# The private signing key is the trust root — it lives ONLY in the
+# REGISTRY_SIGNING_KEY GitHub Actions secret, never on disk in the repo.
+*.key
+*.pem
+*seed*
+registry-signing-key*

@@ -1,0 +1,86 @@
+name: Publish plugin to registry
+
+# Add/replace one artifact in index.json, sign it, and commit. Pages redeploys
+# on the resulting push (see pages.yml). Called two ways:
+#   - repository_dispatch(publish-plugin) from a plugin release (P2), or
+#   - workflow_dispatch (manual) with the same fields.
+on:
+  workflow_dispatch:
+    inputs:
+      id: { description: 'Plugin id (e.g. plugin.wled)', required: true }
+      name: { description: 'Display name', required: true }
+      version: { description: 'Semver (no leading v)', required: true }
+      os: { description: 'linux', default: 'linux' }
+      arch: { description: 'x86_64 | aarch64', default: 'x86_64' }
+      url: { description: 'Artifact download URL (GH release asset)', required: true }
+      sha256: { description: 'Hex sha256 of the artifact', required: true }
+      size: { description: 'Artifact size in bytes', default: '0' }
+      min_core: { description: 'Minimum core version (optional)', default: '' }
+  repository_dispatch:
+    types: [publish-plugin]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: registry-index
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet cryptography
+
+      - name: Resolve inputs (dispatch vs manual)
+        id: in
+        env:
+          EV: ${{ github.event_name }}
+          P: ${{ toJson(github.event.client_payload) }}
+        run: |
+          set -euo pipefail
+          if [ "$EV" = "repository_dispatch" ]; then
+            get() { echo "$P" | python3 -c "import json,sys;print(json.load(sys.stdin).get('$1',''))"; }
+            id=$(get id); name=$(get name); version=$(get version)
+            os=$(get os); arch=$(get arch); url=$(get url)
+            sha256=$(get sha256); size=$(get size); min_core=$(get min_core)
+          else
+            id='${{ inputs.id }}'; name='${{ inputs.name }}'; version='${{ inputs.version }}'
+            os='${{ inputs.os }}'; arch='${{ inputs.arch }}'; url='${{ inputs.url }}'
+            sha256='${{ inputs.sha256 }}'; size='${{ inputs.size }}'; min_core='${{ inputs.min_core }}'
+          fi
+          [ -n "$id" ] && [ -n "$version" ] && [ -n "$url" ] && [ -n "$sha256" ] || {
+            echo "::error::id, version, url and sha256 are required"; exit 1; }
+          for k in id name version os arch url sha256 size min_core; do
+            printf '%s=%s\n' "$k" "$(eval echo \$$k)" >> "$GITHUB_OUTPUT"
+          done
+
+      - name: Update index
+        run: |
+          python scripts/update-index.py public/index.json \
+            "${{ steps.in.outputs.id }}" "${{ steps.in.outputs.name }}" \
+            "${{ steps.in.outputs.version }}" "${{ steps.in.outputs.os }}" \
+            "${{ steps.in.outputs.arch }}" "${{ steps.in.outputs.url }}" \
+            "${{ steps.in.outputs.sha256 }}" "${{ steps.in.outputs.size }}" \
+            "${{ steps.in.outputs.min_core }}"
+
+      - name: Sign index
+        env:
+          REGISTRY_SIGNING_KEY: ${{ secrets.REGISTRY_SIGNING_KEY }}
+        run: python scripts/sign-index.py public/index.json
+
+      - name: Commit
+        run: |
+          set -euo pipefail
+          git config user.name  "homecore-registry[bot]"
+          git config user.email "registry@users.noreply.github.com"
+          git add public/index.json public/index.json.sig
+          if git diff --cached --quiet; then
+            echo "no index change"; exit 0
+          fi
+          git commit -m "registry: ${{ steps.in.outputs.id }} ${{ steps.in.outputs.version }} (${{ steps.in.outputs.os }}/${{ steps.in.outputs.arch }})"
+          git push
