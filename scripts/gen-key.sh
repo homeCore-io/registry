@@ -3,7 +3,7 @@
 #
 # Run this LOCALLY, once. The private seed is the registry's trust root — it
 # authorizes plugin installs on every appliance. NEVER commit or paste it; put
-# it only in the REGISTRY_SIGNING_KEY GitHub Actions secret.
+# it only in the REGISTRY_SECRET_KEY GitHub Actions secret.
 set -euo pipefail
 python3 - <<'PY'
 import base64
@@ -16,7 +16,7 @@ k = Ed25519PrivateKey.generate()
 seed = k.private_bytes(Encoding.Raw, PrivateFormat.Raw, NoEncryption())
 pub = k.public_key().public_bytes(Encoding.Raw, PublicFormat.Raw)
 
-print("=== PRIVATE seed (base64) — GitHub secret REGISTRY_SIGNING_KEY, DO NOT COMMIT ===")
+print("=== PRIVATE seed (base64) — GitHub secret REGISTRY_SECRET_KEY, DO NOT COMMIT ===")
 print(base64.b64encode(seed).decode())
 print()
 print("=== PUBLIC key (base64) — public/pubkey.txt AND appliance [registry].public_key ===")

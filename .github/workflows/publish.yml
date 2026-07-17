@@ -70,7 +70,7 @@ jobs:
 
       - name: Sign index
         env:
-          REGISTRY_SIGNING_KEY: ${{ secrets.REGISTRY_SIGNING_KEY }}
+          REGISTRY_SECRET_KEY: ${{ secrets.REGISTRY_SECRET_KEY }}
         run: python scripts/sign-index.py public/index.json
 
       - name: Commit

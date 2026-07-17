@@ -14,7 +14,7 @@ of `index.json`, then download each artifact and check its `sha256`. Serving is
 ## Trust root
 
 `public/pubkey.txt` is the base64 ed25519 **public** key. The matching **private**
-key is a GitHub Actions secret **`REGISTRY_SIGNING_KEY`** (base64 of the 32-byte
+key is a GitHub Actions secret **`REGISTRY_SECRET_KEY`** (base64 of the 32-byte
 seed) and is never committed. The same public key is baked into every appliance's
 `[registry].public_key`, so an appliance only installs plugins signed by this key.
 
@@ -33,7 +33,7 @@ same fields.
 
 1. `bash scripts/gen-key.sh` **locally** — prints the base64 private seed and
    public key. Never commit or paste the private seed.
-2. Repo → Settings → Secrets → Actions → add **`REGISTRY_SIGNING_KEY`** = the
+2. Repo → Settings → Secrets → Actions → add **`REGISTRY_SECRET_KEY`** = the
    base64 private seed.
 3. Put the base64 public key in `public/pubkey.txt` and in every appliance's
    `[registry].public_key`.
