@@ -2,6 +2,27 @@
   "schema": "1",
   "plugins": [
     {
+      "id": "plugin.hue",
+      "name": "Hue",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-hue/releases/download/v0.1.4/plugin.hue-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "a122919b085e5d9330d274286fe1b784eea8d9286f6e9ae964ddbaf163f62b4a",
+              "key_id": "prod-1",
+              "size": 2955749
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.wled",
       "name": "Wled",
       "description": "",
