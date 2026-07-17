@@ -1,4 +1,26 @@
 {
   "schema": "1",
-  "plugins": []
+  "plugins": [
+    {
+      "id": "plugin.wled",
+      "name": "Wled",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-wled/releases/download/v0.1.4/plugin.wled-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "7eebf0ae73498a22c6dcb8fd33aec2e240a3e86f85830be21e3bced4951057df",
+              "key_id": "prod-1",
+              "size": 5671551
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
