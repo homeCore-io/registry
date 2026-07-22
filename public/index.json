@@ -120,6 +120,27 @@
       ]
     },
     {
+      "id": "plugin.sonos",
+      "name": "Sonos",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-sonos/releases/download/v0.1.4/plugin.sonos-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "2eb1daa0bdab6bff4857972ac0fa479680158623587fd027653796dabe549362",
+              "key_id": "prod-1",
+              "size": 3402301
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.wled",
       "name": "Wled",
       "description": "",
