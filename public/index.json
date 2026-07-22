@@ -2,6 +2,27 @@
   "schema": "1",
   "plugins": [
     {
+      "id": "plugin.caseta",
+      "name": "Caseta",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-caseta/releases/download/v0.1.4/plugin.caseta-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "39052c5431f86a2cd473c8a2df7864be499db7568ed24480b286825813b6b94d",
+              "key_id": "prod-1",
+              "size": 2657892
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.hue",
       "name": "Hue",
       "description": "",
