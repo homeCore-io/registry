@@ -24,9 +24,20 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: registry-index
-  cancel-in-progress: false
+# No concurrency group, deliberately.
+#
+# `group: registry-index` looked like serialization and was not. GitHub keeps at
+# most **one pending run per group**, so when a burst of releases dispatches here
+# — tagging the fleet does exactly that — each new arrival cancels the one
+# already waiting. Ten dispatches on 2026-07-21 produced four cancelled runs and
+# two push rejections, and six plugins silently never reached the index while
+# every release reported success.
+#
+# Instead the commit step below re-applies its change onto the freshly fetched
+# index and retries. `update-index.py` is idempotent for a given
+# (id, version, os, arch), so replaying it against a newer index is correct
+# rather than merely safe, and concurrent publishes now merge instead of
+# racing.
 
 jobs:
   publish:
@@ -66,31 +77,50 @@ jobs:
             printf '%s=%s\n' "$k" "$(eval echo \$$k)" >> "$GITHUB_OUTPUT"
           done
 
-      - name: Update index
-        run: |
-          python scripts/update-index.py public/index.json \
-            "${{ steps.in.outputs.id }}" "${{ steps.in.outputs.name }}" \
-            "${{ steps.in.outputs.version }}" "${{ steps.in.outputs.os }}" \
-            "${{ steps.in.outputs.arch }}" "${{ steps.in.outputs.url }}" \
-            "${{ steps.in.outputs.sha256 }}" "${{ steps.in.outputs.size }}" \
-            "${{ steps.in.outputs.min_core }}"
-
-      - name: Sign index
+      - name: Update, sign and commit the index
         env:
           REGISTRY_SECRET_KEY: ${{ secrets.REGISTRY_SECRET_KEY }}
-        run: python scripts/sign-index.py public/index.json
-
-      - name: Commit
         run: |
           set -euo pipefail
           git config user.name  "homecore-registry[bot]"
           git config user.email "registry@users.noreply.github.com"
-          git add public/index.json public/index.json.sig
-          if git diff --cached --quiet; then
-            echo "no index change"; exit 0
-          fi
-          git commit -m "registry: ${{ steps.in.outputs.id }} ${{ steps.in.outputs.version }} (${{ steps.in.outputs.os }}/${{ steps.in.outputs.arch }})"
-          git push
+
+          # Apply this artifact to whatever the index currently is, sign, and
+          # push. If someone else pushed in between, discard our attempt, take
+          # their index, and apply ours again — never a rebase, because both
+          # commits rewrite the whole of index.json and would always conflict.
+          for attempt in 1 2 3 4 5; do
+            python scripts/update-index.py public/index.json \
+              "${{ steps.in.outputs.id }}" "${{ steps.in.outputs.name }}" \
+              "${{ steps.in.outputs.version }}" "${{ steps.in.outputs.os }}" \
+              "${{ steps.in.outputs.arch }}" "${{ steps.in.outputs.url }}" \
+              "${{ steps.in.outputs.sha256 }}" "${{ steps.in.outputs.size }}" \
+              "${{ steps.in.outputs.min_core }}"
+
+            # Sign the exact bytes update-index.py just wrote.
+            python scripts/sign-index.py public/index.json
+
+            git add public/index.json public/index.json.sig
+            if git diff --cached --quiet; then
+              echo "index already carries this artifact — nothing to do"
+              exit 0
+            fi
+            git commit -q -m "registry: ${{ steps.in.outputs.id }} ${{ steps.in.outputs.version }} (${{ steps.in.outputs.os }}/${{ steps.in.outputs.arch }})"
+
+            if git push -q; then
+              echo "index updated on attempt ${attempt}"
+              exit 0
+            fi
+
+            echo "::notice::push rejected (attempt ${attempt}); re-applying onto the current index"
+            git reset --hard HEAD~1
+            git fetch -q origin "${GITHUB_REF_NAME:-main}"
+            git reset --hard "origin/${GITHUB_REF_NAME:-main}"
+            sleep $(( attempt * 3 ))
+          done
+
+          echo "::error::could not update the index after 5 attempts — another publish keeps winning the race. Re-run this workflow."
+          exit 1
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
