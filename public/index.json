@@ -196,6 +196,27 @@
       ]
     },
     {
+      "id": "plugin.yolink",
+      "name": "Yolink",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-yolink/releases/download/v0.1.4/plugin.yolink-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "42353231227005392d38271842bad30cedc9daa1813ad3b8c0ed62a9b170883e",
+              "key_id": "prod-1",
+              "size": 5292234
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.zwave",
       "name": "Zwave",
       "description": "",
