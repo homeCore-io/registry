@@ -23,6 +23,27 @@
       ]
     },
     {
+      "id": "plugin.ecowitt",
+      "name": "Ecowitt",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-ecowitt/releases/download/v0.1.4/plugin.ecowitt-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "d64aca755c6c01c30af664cc9df2857dc3931c5d9ae71cafa83d8d3792b69fb4",
+              "key_id": "prod-1",
+              "size": 2914547
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.hue",
       "name": "Hue",
       "description": "",
