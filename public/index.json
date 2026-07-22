@@ -63,6 +63,27 @@
           ]
         }
       ]
+    },
+    {
+      "id": "plugin.zwave",
+      "name": "Zwave",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-zwave/releases/download/v0.1.4/plugin.zwave-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "1f4d0892d329b9d5cb9dd139e31092d453c87d2007d79f7acd649bf4ebea3864",
+              "key_id": "prod-1",
+              "size": 2821386
+            }
+          ]
+        }
+      ]
     }
   ]
 }
