@@ -78,6 +78,27 @@
       ]
     },
     {
+      "id": "plugin.isy",
+      "name": "Isy",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-isy/releases/download/v0.1.4/plugin.isy-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "e9131b9ace4e2d597c0ca8ed62b76999263240944fc0adc7dc63839c86422bff",
+              "key_id": "prod-1",
+              "size": 2744220
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.lutron",
       "name": "Lutron",
       "description": "",
