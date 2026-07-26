@@ -262,6 +262,19 @@
               "size": 3402301
             }
           ]
+        },
+        {
+          "version": "0.1.7",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-sonos/releases/download/v0.1.7/plugin.sonos-0.1.7-linux-x86_64.tar.zst",
+              "sha256": "efa57b865c3e3d3208c406b8ed10e7676531ef15d65443b7537cdc87dce9f127",
+              "key_id": "prod-1",
+              "size": 3434502
+            }
+          ]
         }
       ]
     },
