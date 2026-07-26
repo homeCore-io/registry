@@ -224,6 +224,27 @@
       ]
     },
     {
+      "id": "plugin.roku",
+      "name": "Roku",
+      "description": "",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-roku/releases/download/v0.1.0/plugin.roku-0.1.0-linux-x86_64.tar.zst",
+              "sha256": "0267566ddaff13c6be93ec546074a0e9e33f20c1ccf6bfa02104294f2c7979d1",
+              "key_id": "prod-1",
+              "size": 2939613
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.sonos",
       "name": "Sonos",
       "description": "",
