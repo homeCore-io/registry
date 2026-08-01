@@ -392,6 +392,19 @@
               "size": 3434502
             }
           ]
+        },
+        {
+          "version": "0.1.8",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-sonos/releases/download/v0.1.8/plugin.sonos-0.1.8-linux-x86_64.tar.zst",
+              "sha256": "c2a0b0da0b27f8c35d7ea09cac7994f47b84945e7465da64463ede1841ff45d5",
+              "key_id": "prod-1",
+              "size": 3440723
+            }
+          ]
         }
       ]
     },
