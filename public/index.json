@@ -58,6 +58,19 @@
               "size": 2683105
             }
           ]
+        },
+        {
+          "version": "0.1.9",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-caseta/releases/download/v0.1.9/plugin.caseta-0.1.9-linux-x86_64.tar.zst",
+              "sha256": "e2ee57c0a66072def09c87910193820a1d8dee0e2ea458263a850cb7093c8cb9",
+              "key_id": "prod-1",
+              "size": 2652881
+            }
+          ]
         }
       ]
     },
