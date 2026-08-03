@@ -918,6 +918,19 @@
               "size": 2803251
             }
           ]
+        },
+        {
+          "version": "0.1.8",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-zwave-v0.1.8/plugin.zwave-0.1.8-linux-x86_64.tar.zst",
+              "sha256": "2875fb0cb57ba475e03ade80936011991cc988e7bf4c5c6aca8f987cccf53e1d",
+              "key_id": "prod-1",
+              "size": 1961333
+            }
+          ]
         }
       ]
     }
