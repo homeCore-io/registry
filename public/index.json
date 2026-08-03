@@ -527,6 +527,19 @@
               "size": 5380978
             }
           ]
+        },
+        {
+          "version": "0.1.5",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-roku-v0.1.5/plugin.roku-0.1.5-linux-x86_64.tar.zst",
+              "sha256": "1c8da72fd3f27ffa0d98894e766b317308c4c4887f53faf2b9557d6f9627a160",
+              "key_id": "prod-1",
+              "size": 3886321
+            }
+          ]
         }
       ]
     },
