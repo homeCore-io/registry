@@ -16,6 +16,7 @@ on:
       sha256: { description: 'Hex sha256 of the artifact', required: true }
       size: { description: 'Artifact size in bytes', default: '0' }
       min_core: { description: 'Minimum core version (optional)', default: '' }
+      description: { description: "One-line summary for the plugin's catalog card (optional; blank keeps the indexed one)", default: '' }
   repository_dispatch:
     types: [publish-plugin]
 
@@ -59,27 +60,59 @@ jobs:
         env:
           EV: ${{ github.event_name }}
           P: ${{ toJson(github.event.client_payload) }}
+          # Manual inputs arrive through the environment rather than `${{ }}`
+          # inside the script: `description` is free prose, and splicing it into
+          # the shell source is how a quote or a backtick becomes a command.
+          IN_ID: ${{ inputs.id }}
+          IN_NAME: ${{ inputs.name }}
+          IN_VERSION: ${{ inputs.version }}
+          IN_OS: ${{ inputs.os }}
+          IN_ARCH: ${{ inputs.arch }}
+          IN_URL: ${{ inputs.url }}
+          IN_SHA256: ${{ inputs.sha256 }}
+          IN_SIZE: ${{ inputs.size }}
+          IN_MIN_CORE: ${{ inputs.min_core }}
+          IN_DESCRIPTION: ${{ inputs.description }}
         run: |
           set -euo pipefail
           if [ "$EV" = "repository_dispatch" ]; then
-            get() { echo "$P" | python3 -c "import json,sys;print(json.load(sys.stdin).get('$1',''))"; }
+            get() { printf '%s' "$P" | python3 -c "import json,sys;print(json.load(sys.stdin).get('$1',''))"; }
             id=$(get id); name=$(get name); version=$(get version)
             os=$(get os); arch=$(get arch); url=$(get url)
             sha256=$(get sha256); size=$(get size); min_core=$(get min_core)
+            description=$(get description)
           else
-            id='${{ inputs.id }}'; name='${{ inputs.name }}'; version='${{ inputs.version }}'
-            os='${{ inputs.os }}'; arch='${{ inputs.arch }}'; url='${{ inputs.url }}'
-            sha256='${{ inputs.sha256 }}'; size='${{ inputs.size }}'; min_core='${{ inputs.min_core }}'
+            id="$IN_ID"; name="$IN_NAME"; version="$IN_VERSION"
+            os="$IN_OS"; arch="$IN_ARCH"; url="$IN_URL"
+            sha256="$IN_SHA256"; size="$IN_SIZE"; min_core="$IN_MIN_CORE"
+            description="$IN_DESCRIPTION"
           fi
           [ -n "$id" ] && [ -n "$version" ] && [ -n "$url" ] && [ -n "$sha256" ] || {
             echo "::error::id, version, url and sha256 are required"; exit 1; }
+          # Indirect expansion, quoted — the previous `eval echo \$$k` re-parsed
+          # each value as shell, so a `*` globbed against the repo and prose lost
+          # its spacing.
           for k in id name version os arch url sha256 size min_core; do
-            printf '%s=%s\n' "$k" "$(eval echo \$$k)" >> "$GITHUB_OUTPUT"
+            printf '%s=%s\n' "$k" "${!k}" >> "$GITHUB_OUTPUT"
           done
+          # Free text cannot use `key=value`, which ends at the first newline.
+          { echo "description<<__HC_DESC__"
+            printf '%s\n' "$description"
+            echo "__HC_DESC__"; } >> "$GITHUB_OUTPUT"
 
       - name: Update, sign and commit the index
         env:
           REGISTRY_SECRET_KEY: ${{ secrets.REGISTRY_SECRET_KEY }}
+          ID: ${{ steps.in.outputs.id }}
+          NAME: ${{ steps.in.outputs.name }}
+          VERSION: ${{ steps.in.outputs.version }}
+          OS_: ${{ steps.in.outputs.os }}
+          ARCH: ${{ steps.in.outputs.arch }}
+          URL: ${{ steps.in.outputs.url }}
+          SHA256: ${{ steps.in.outputs.sha256 }}
+          SIZE: ${{ steps.in.outputs.size }}
+          MIN_CORE: ${{ steps.in.outputs.min_core }}
+          DESCRIPTION: ${{ steps.in.outputs.description }}
         run: |
           set -euo pipefail
           git config user.name  "homecore-registry[bot]"
@@ -91,11 +124,8 @@ jobs:
           # commits rewrite the whole of index.json and would always conflict.
           for attempt in 1 2 3 4 5; do
             python scripts/update-index.py public/index.json \
-              "${{ steps.in.outputs.id }}" "${{ steps.in.outputs.name }}" \
-              "${{ steps.in.outputs.version }}" "${{ steps.in.outputs.os }}" \
-              "${{ steps.in.outputs.arch }}" "${{ steps.in.outputs.url }}" \
-              "${{ steps.in.outputs.sha256 }}" "${{ steps.in.outputs.size }}" \
-              "${{ steps.in.outputs.min_core }}"
+              "$ID" "$NAME" "$VERSION" "$OS_" "$ARCH" "$URL" \
+              "$SHA256" "$SIZE" "$MIN_CORE" "$DESCRIPTION"
 
             # Sign the exact bytes update-index.py just wrote.
             python scripts/sign-index.py public/index.json
@@ -105,7 +135,7 @@ jobs:
               echo "index already carries this artifact — nothing to do"
               exit 0
             fi
-            git commit -q -m "registry: ${{ steps.in.outputs.id }} ${{ steps.in.outputs.version }} (${{ steps.in.outputs.os }}/${{ steps.in.outputs.arch }})"
+            git commit -q -m "registry: ${ID} ${VERSION} (${OS_}/${ARCH})"
 
             if git push -q; then
               echo "index updated on attempt ${attempt}"

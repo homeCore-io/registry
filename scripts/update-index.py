@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Add or replace one artifact entry in the registry index.
 
-    python scripts/update-index.py <index.json> <id> <name> <version> <os> <arch> <url> <sha256> [size] [min_core]
+    python scripts/update-index.py <index.json> <id> <name> <version> <os> <arch> <url> <sha256> [size] [min_core] [description]
 
 Idempotent: replaces the artifact for the same (id, version, os, arch), creating
 the plugin/version entries as needed. Writes stable, sorted JSON so re-runs are
 deterministic. Signing happens separately (sign-index.py) over the exact bytes
 this writes.
+
+`description` is the plugin's one-line summary, shown on its card in the web
+UI's registry browser. It is plugin-level rather than version-level: the newest
+release to carry one wins.
 """
 import functools
 import json
@@ -17,6 +21,7 @@ import sys
 (path, pid, name, version, os_, arch, url, sha256) = sys.argv[1:9]
 size = int(sys.argv[9]) if len(sys.argv) > 9 and sys.argv[9] else 0
 min_core = sys.argv[10] if len(sys.argv) > 10 else ""
+description = sys.argv[11] if len(sys.argv) > 11 else ""
 
 idx = json.load(open(path)) if os.path.exists(path) else {"schema": "1", "plugins": []}
 idx.setdefault("schema", "1")
@@ -27,6 +32,12 @@ if plug is None:
     plug = {"id": pid, "name": name, "description": "", "category": "", "versions": []}
     idx["plugins"].append(plug)
 plug["name"] = name
+# Only overwrite when this release actually carried one. An older publisher, or
+# a manual run that omits it, must not blank out a description already indexed.
+if description:
+    plug["description"] = description
+plug.setdefault("description", "")
+plug.setdefault("category", "")
 plug.setdefault("versions", [])
 
 ver = next((v for v in plug["versions"] if v["version"] == version), None)
