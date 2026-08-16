@@ -8,32 +8,6 @@
       "category": "",
       "versions": [
         {
-          "version": "0.1.10",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-caseta-v0.1.10/plugin.caseta-0.1.10-linux-x86_64.tar.zst",
-              "sha256": "155499fc6ae4ab42fd0b08861a226a993948e6c2cae82589c2a91907cdfab598",
-              "key_id": "prod-1",
-              "size": 1809634
-            }
-          ]
-        },
-        {
-          "version": "0.1.11",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-caseta-v0.1.11/plugin.caseta-0.1.11-linux-x86_64.tar.zst",
-              "sha256": "e858da8e7525df7558e53f6d9de9bd31cdddc31c0c4984c2152becba5ba3ea12",
-              "key_id": "prod-1",
-              "size": 1830190
-            }
-          ]
-        },
-        {
           "version": "0.1.4",
           "artifacts": [
             {
@@ -97,25 +71,17 @@
               "size": 2652881
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "plugin.ecowitt",
-      "name": "Ecowitt",
-      "description": "",
-      "category": "",
-      "versions": [
+        },
         {
           "version": "0.1.10",
           "artifacts": [
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.10/plugin.ecowitt-0.1.10-linux-x86_64.tar.zst",
-              "sha256": "86b40f5a078282b19df85d2436262c7e95448f58c92153790bd2a949784f8117",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-caseta-v0.1.10/plugin.caseta-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "155499fc6ae4ab42fd0b08861a226a993948e6c2cae82589c2a91907cdfab598",
               "key_id": "prod-1",
-              "size": 3969557
+              "size": 1809634
             }
           ]
         },
@@ -125,26 +91,21 @@
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.11/plugin.ecowitt-0.1.11-linux-x86_64.tar.zst",
-              "sha256": "fa7c49108948e955ce05f5f5adbb4704d93895b22d4604a5071e1a224f9f10e5",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-caseta-v0.1.11/plugin.caseta-0.1.11-linux-x86_64.tar.zst",
+              "sha256": "e858da8e7525df7558e53f6d9de9bd31cdddc31c0c4984c2152becba5ba3ea12",
               "key_id": "prod-1",
-              "size": 3982855
+              "size": 1830190
             }
           ]
-        },
-        {
-          "version": "0.1.12",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.12/plugin.ecowitt-0.1.12-linux-x86_64.tar.zst",
-              "sha256": "a8266fb058cb3b2c2f2a6ffe4f10976e696712512b34947be417a2b9c2964def",
-              "key_id": "prod-1",
-              "size": 4007085
-            }
-          ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "plugin.ecowitt",
+      "name": "Ecowitt",
+      "description": "",
+      "category": "",
+      "versions": [
         {
           "version": "0.1.4",
           "artifacts": [
@@ -222,6 +183,45 @@
               "size": 2916435
             }
           ]
+        },
+        {
+          "version": "0.1.10",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.10/plugin.ecowitt-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "86b40f5a078282b19df85d2436262c7e95448f58c92153790bd2a949784f8117",
+              "key_id": "prod-1",
+              "size": 3969557
+            }
+          ]
+        },
+        {
+          "version": "0.1.11",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.11/plugin.ecowitt-0.1.11-linux-x86_64.tar.zst",
+              "sha256": "fa7c49108948e955ce05f5f5adbb4704d93895b22d4604a5071e1a224f9f10e5",
+              "key_id": "prod-1",
+              "size": 3982855
+            }
+          ]
+        },
+        {
+          "version": "0.1.12",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.12/plugin.ecowitt-0.1.12-linux-x86_64.tar.zst",
+              "sha256": "a8266fb058cb3b2c2f2a6ffe4f10976e696712512b34947be417a2b9c2964def",
+              "key_id": "prod-1",
+              "size": 4007085
+            }
+          ]
         }
       ]
     },
@@ -231,19 +231,6 @@
       "description": "",
       "category": "",
       "versions": [
-        {
-          "version": "0.1.10",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-hue-v0.1.10/plugin.hue-0.1.10-linux-x86_64.tar.zst",
-              "sha256": "7b0558a55b379d650a4b686fd7043ce16cf5cb8729fff8a224d947607737598b",
-              "key_id": "prod-1",
-              "size": 3930766
-            }
-          ]
-        },
         {
           "version": "0.1.4",
           "artifacts": [
@@ -321,6 +308,19 @@
               "size": 3916510
             }
           ]
+        },
+        {
+          "version": "0.1.10",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-hue-v0.1.10/plugin.hue-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "7b0558a55b379d650a4b686fd7043ce16cf5cb8729fff8a224d947607737598b",
+              "key_id": "prod-1",
+              "size": 3930766
+            }
+          ]
         }
       ]
     },
@@ -330,19 +330,6 @@
       "description": "",
       "category": "",
       "versions": [
-        {
-          "version": "0.1.10",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-isy-v0.1.10/plugin.isy-0.1.10-linux-x86_64.tar.zst",
-              "sha256": "2f85e10d4c9491d21ff028ba690542d1197bb199733fbe1ed3ef3df0ae513e2c",
-              "key_id": "prod-1",
-              "size": 3702900
-            }
-          ]
-        },
         {
           "version": "0.1.4",
           "artifacts": [
@@ -407,6 +394,19 @@
               "size": 3671992
             }
           ]
+        },
+        {
+          "version": "0.1.10",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-isy-v0.1.10/plugin.isy-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "2f85e10d4c9491d21ff028ba690542d1197bb199733fbe1ed3ef3df0ae513e2c",
+              "key_id": "prod-1",
+              "size": 3702900
+            }
+          ]
         }
       ]
     },
@@ -416,6 +416,58 @@
       "description": "",
       "category": "",
       "versions": [
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-lutron/releases/download/v0.1.4/plugin.lutron-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "0fe76c44b46aeb168cdee7543f640946d333e7e82faae97fd863d529cde35ad1",
+              "key_id": "prod-1",
+              "size": 2787822
+            }
+          ]
+        },
+        {
+          "version": "0.1.5",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-lutron/releases/download/v0.1.5/plugin.lutron-0.1.5-linux-x86_64.tar.zst",
+              "sha256": "55cb986fb9d5cda20660e146325c32613cfb206d14c633aa5a88453a6333b705",
+              "key_id": "prod-1",
+              "size": 2788165
+            }
+          ]
+        },
+        {
+          "version": "0.1.6",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-lutron/releases/download/v0.1.6/plugin.lutron-0.1.6-linux-x86_64.tar.zst",
+              "sha256": "e266786ea682efe36b323f516b369942632e59cdf2d7fd606320137aad68e720",
+              "key_id": "prod-1",
+              "size": 2787656
+            }
+          ]
+        },
+        {
+          "version": "0.1.7",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-lutron/releases/download/v0.1.7/plugin.lutron-0.1.7-linux-x86_64.tar.zst",
+              "sha256": "1822036951b750f0cea23ab8c3f4233fca6400aca2dd9478077dbb5b6288199d",
+              "key_id": "prod-1",
+              "size": 2792507
+            }
+          ]
+        },
         {
           "version": "0.1.10",
           "artifacts": [
@@ -478,58 +530,6 @@
               "sha256": "f4ed7bcdcbabc627346bd22f1ae4331ef15bf2a396492eb5108ce99e9fb039a2",
               "key_id": "prod-1",
               "size": 3794301
-            }
-          ]
-        },
-        {
-          "version": "0.1.4",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-lutron/releases/download/v0.1.4/plugin.lutron-0.1.4-linux-x86_64.tar.zst",
-              "sha256": "0fe76c44b46aeb168cdee7543f640946d333e7e82faae97fd863d529cde35ad1",
-              "key_id": "prod-1",
-              "size": 2787822
-            }
-          ]
-        },
-        {
-          "version": "0.1.5",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-lutron/releases/download/v0.1.5/plugin.lutron-0.1.5-linux-x86_64.tar.zst",
-              "sha256": "55cb986fb9d5cda20660e146325c32613cfb206d14c633aa5a88453a6333b705",
-              "key_id": "prod-1",
-              "size": 2788165
-            }
-          ]
-        },
-        {
-          "version": "0.1.6",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-lutron/releases/download/v0.1.6/plugin.lutron-0.1.6-linux-x86_64.tar.zst",
-              "sha256": "e266786ea682efe36b323f516b369942632e59cdf2d7fd606320137aad68e720",
-              "key_id": "prod-1",
-              "size": 2787656
-            }
-          ]
-        },
-        {
-          "version": "0.1.7",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-lutron/releases/download/v0.1.7/plugin.lutron-0.1.7-linux-x86_64.tar.zst",
-              "sha256": "1822036951b750f0cea23ab8c3f4233fca6400aca2dd9478077dbb5b6288199d",
-              "key_id": "prod-1",
-              "size": 2792507
             }
           ]
         }
@@ -641,32 +641,6 @@
       "category": "",
       "versions": [
         {
-          "version": "0.1.10",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-sonos-v0.1.10/plugin.sonos-0.1.10-linux-x86_64.tar.zst",
-              "sha256": "b30ab50ec9288bca9b053be264deaee69c3196e8d764ec471f8cd711d2887960",
-              "key_id": "prod-1",
-              "size": 2840327
-            }
-          ]
-        },
-        {
-          "version": "0.1.11",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-sonos-v0.1.11/plugin.sonos-0.1.11-linux-x86_64.tar.zst",
-              "sha256": "3bf58130ad952df4edf7751a25fe484fa610cbc7dc52e0df95c31334f750a136",
-              "key_id": "prod-1",
-              "size": 2848287
-            }
-          ]
-        },
-        {
           "version": "0.1.4",
           "artifacts": [
             {
@@ -717,25 +691,17 @@
               "size": 3414535
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "plugin.thermostat",
-      "name": "Thermostat",
-      "description": "",
-      "category": "",
-      "versions": [
+        },
         {
           "version": "0.1.10",
           "artifacts": [
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-thermostat/releases/download/v0.1.10/plugin.thermostat-0.1.10-linux-x86_64.tar.zst",
-              "sha256": "7e305059cf2e048c6845a1a5570a29d5c58ea64682147a231ddab9d46ce926c7",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-sonos-v0.1.10/plugin.sonos-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "b30ab50ec9288bca9b053be264deaee69c3196e8d764ec471f8cd711d2887960",
               "key_id": "prod-1",
-              "size": 2724376
+              "size": 2840327
             }
           ]
         },
@@ -745,39 +711,21 @@
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-thermostat/releases/download/v0.1.11/plugin.thermostat-0.1.11-linux-x86_64.tar.zst",
-              "sha256": "add010fb88cdae8da45dcd248c5434f4174cf63fe1efaeae5b2dccc868b10082",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-sonos-v0.1.11/plugin.sonos-0.1.11-linux-x86_64.tar.zst",
+              "sha256": "3bf58130ad952df4edf7751a25fe484fa610cbc7dc52e0df95c31334f750a136",
               "key_id": "prod-1",
-              "size": 2684212
+              "size": 2848287
             }
           ]
-        },
-        {
-          "version": "0.1.12",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-thermostat-v0.1.12/plugin.thermostat-0.1.12-linux-x86_64.tar.zst",
-              "sha256": "f68f24ebbf2f933bca65821516dbe3f9b77c0db6b1f6faabe18581e4637e2e10",
-              "key_id": "prod-1",
-              "size": 1852827
-            }
-          ]
-        },
-        {
-          "version": "0.1.13",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-thermostat-v0.1.13/plugin.thermostat-0.1.13-linux-x86_64.tar.zst",
-              "sha256": "a6ed6bd29bfd150e1a73b0d1eea7cf20bd77ee1d1cd952219c26c50c8c679c6c",
-              "key_id": "prod-1",
-              "size": 1870912
-            }
-          ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "plugin.thermostat",
+      "name": "Thermostat",
+      "description": "",
+      "category": "",
+      "versions": [
         {
           "version": "0.1.6",
           "artifacts": [
@@ -829,25 +777,17 @@
               "size": 2724643
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "plugin.wled",
-      "name": "Wled",
-      "description": "",
-      "category": "",
-      "versions": [
+        },
         {
           "version": "0.1.10",
           "artifacts": [
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.10/plugin.wled-0.1.10-linux-x86_64.tar.zst",
-              "sha256": "98619e07012faf71fdb352b8e9190c95969c8c6f1237a77ea06cfbc15a457192",
+              "url": "https://github.com/homeCore-io/hc-thermostat/releases/download/v0.1.10/plugin.thermostat-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "7e305059cf2e048c6845a1a5570a29d5c58ea64682147a231ddab9d46ce926c7",
               "key_id": "prod-1",
-              "size": 3939179
+              "size": 2724376
             }
           ]
         },
@@ -857,13 +797,47 @@
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.11/plugin.wled-0.1.11-linux-x86_64.tar.zst",
-              "sha256": "2172eda7fbd7bdaf7de422e1fe9396b911072342a94be503287feb4f5fdd76aa",
+              "url": "https://github.com/homeCore-io/hc-thermostat/releases/download/v0.1.11/plugin.thermostat-0.1.11-linux-x86_64.tar.zst",
+              "sha256": "add010fb88cdae8da45dcd248c5434f4174cf63fe1efaeae5b2dccc868b10082",
               "key_id": "prod-1",
-              "size": 4063645
+              "size": 2684212
             }
           ]
         },
+        {
+          "version": "0.1.12",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-thermostat-v0.1.12/plugin.thermostat-0.1.12-linux-x86_64.tar.zst",
+              "sha256": "f68f24ebbf2f933bca65821516dbe3f9b77c0db6b1f6faabe18581e4637e2e10",
+              "key_id": "prod-1",
+              "size": 1852827
+            }
+          ]
+        },
+        {
+          "version": "0.1.13",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-thermostat-v0.1.13/plugin.thermostat-0.1.13-linux-x86_64.tar.zst",
+              "sha256": "a6ed6bd29bfd150e1a73b0d1eea7cf20bd77ee1d1cd952219c26c50c8c679c6c",
+              "key_id": "prod-1",
+              "size": 1870912
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plugin.wled",
+      "name": "Wled",
+      "description": "WLED LED controllers, discovered on the network over mDNS",
+      "category": "",
+      "versions": [
         {
           "version": "0.1.4",
           "artifacts": [
@@ -941,25 +915,17 @@
               "size": 3925025
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "plugin.yolink",
-      "name": "Yolink",
-      "description": "",
-      "category": "",
-      "versions": [
+        },
         {
           "version": "0.1.10",
           "artifacts": [
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-yolink/releases/download/v0.1.10/plugin.yolink-0.1.10-linux-x86_64.tar.zst",
-              "sha256": "944ad681c1ea1c90c0b0a290abdd5ab405a346bf1b23c43cd46ead8c8d2a7c70",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.10/plugin.wled-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "98619e07012faf71fdb352b8e9190c95969c8c6f1237a77ea06cfbc15a457192",
               "key_id": "prod-1",
-              "size": 5276512
+              "size": 3939179
             }
           ]
         },
@@ -969,10 +935,10 @@
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-yolink-v0.1.11/plugin.yolink-0.1.11-linux-x86_64.tar.zst",
-              "sha256": "255db4530833b1dad9a891f8216ac8f8bc363a0ced7f6f6310411d0de6b356d5",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.11/plugin.wled-0.1.11-linux-x86_64.tar.zst",
+              "sha256": "2172eda7fbd7bdaf7de422e1fe9396b911072342a94be503287feb4f5fdd76aa",
               "key_id": "prod-1",
-              "size": 3542131
+              "size": 4063645
             }
           ]
         },
@@ -982,13 +948,21 @@
             {
               "os": "linux",
               "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-yolink-v0.1.12/plugin.yolink-0.1.12-linux-x86_64.tar.zst",
-              "sha256": "9911a9c7adfd4c2a9b3e436c6ad67f37441cea44d047ba902c563520b54103af",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.12/plugin.wled-0.1.12-linux-x86_64.tar.zst",
+              "sha256": "32c03aae65e3a94e631450ea46cf212b4cf869fe50803e3dbce9e983e79edbcb",
               "key_id": "prod-1",
-              "size": 3564154
+              "size": 4063842
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "plugin.yolink",
+      "name": "Yolink",
+      "description": "",
+      "category": "",
+      "versions": [
         {
           "version": "0.1.4",
           "artifacts": [
@@ -1038,6 +1012,45 @@
               "sha256": "25681093089abf71ef3bd16dec1b8a9734473ebe540e766415462daa5575cef1",
               "key_id": "prod-1",
               "size": 5309756
+            }
+          ]
+        },
+        {
+          "version": "0.1.10",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-yolink/releases/download/v0.1.10/plugin.yolink-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "944ad681c1ea1c90c0b0a290abdd5ab405a346bf1b23c43cd46ead8c8d2a7c70",
+              "key_id": "prod-1",
+              "size": 5276512
+            }
+          ]
+        },
+        {
+          "version": "0.1.11",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-yolink-v0.1.11/plugin.yolink-0.1.11-linux-x86_64.tar.zst",
+              "sha256": "255db4530833b1dad9a891f8216ac8f8bc363a0ced7f6f6310411d0de6b356d5",
+              "key_id": "prod-1",
+              "size": 3542131
+            }
+          ]
+        },
+        {
+          "version": "0.1.12",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-yolink-v0.1.12/plugin.yolink-0.1.12-linux-x86_64.tar.zst",
+              "sha256": "9911a9c7adfd4c2a9b3e436c6ad67f37441cea44d047ba902c563520b54103af",
+              "key_id": "prod-1",
+              "size": 3564154
             }
           ]
         }
