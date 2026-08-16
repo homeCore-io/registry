@@ -103,7 +103,7 @@
     {
       "id": "plugin.ecowitt",
       "name": "Ecowitt",
-      "description": "",
+      "description": "Ecowitt weather stations, with sensors discovered from the gateway's data stream",
       "category": "",
       "versions": [
         {
@@ -220,6 +220,19 @@
               "sha256": "a8266fb058cb3b2c2f2a6ffe4f10976e696712512b34947be417a2b9c2964def",
               "key_id": "prod-1",
               "size": 4007085
+            }
+          ]
+        },
+        {
+          "version": "0.1.13",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.13/plugin.ecowitt-0.1.13-linux-x86_64.tar.zst",
+              "sha256": "e76313f7ba62c99aacaaa446bc8914ef253147487d6633a3c154bf429247a5f9",
+              "key_id": "prod-1",
+              "size": 4009748
             }
           ]
         }
