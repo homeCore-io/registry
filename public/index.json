@@ -1085,7 +1085,7 @@
     {
       "id": "plugin.zwave",
       "name": "Zwave",
-      "description": "",
+      "description": "Z-Wave locks, dimmers, switches and sensors, through a zwave-js server",
       "category": "",
       "versions": [
         {
@@ -1163,6 +1163,19 @@
               "sha256": "6e2eee38c38ccdaedfe4d3a913b383af21ad9b5d94cbb838911fec309df2f183",
               "key_id": "prod-1",
               "size": 1974451
+            }
+          ]
+        },
+        {
+          "version": "0.1.10",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-zwave-v0.1.10/plugin.zwave-0.1.10-linux-x86_64.tar.zst",
+              "sha256": "9f934ca805b19a4810108c75c251943e9fd35075dc16ab71be16535d23e9755e",
+              "key_id": "prod-1",
+              "size": 1978228
             }
           ]
         }
