@@ -241,7 +241,7 @@
     {
       "id": "plugin.hue",
       "name": "Hue",
-      "description": "",
+      "description": "Philips Hue lights, groups and scenes, via the Hue bridge",
       "category": "",
       "versions": [
         {
@@ -332,6 +332,19 @@
               "sha256": "7b0558a55b379d650a4b686fd7043ce16cf5cb8729fff8a224d947607737598b",
               "key_id": "prod-1",
               "size": 3930766
+            }
+          ]
+        },
+        {
+          "version": "0.1.11",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-hue-v0.1.11/plugin.hue-0.1.11-linux-x86_64.tar.zst",
+              "sha256": "380931c82878eb417306b9c15703e01c80ab423264d8e2dd8c6bcaef22c6552f",
+              "key_id": "prod-1",
+              "size": 3948884
             }
           ]
         }
