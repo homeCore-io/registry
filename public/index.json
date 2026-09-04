@@ -439,7 +439,7 @@
     {
       "id": "plugin.lutron",
       "name": "Lutron",
-      "description": "",
+      "description": "Lutron RadioRA2 dimmers, switches and scenes, over telnet to the main repeater",
       "category": "",
       "versions": [
         {
@@ -556,6 +556,19 @@
               "sha256": "f4ed7bcdcbabc627346bd22f1ae4331ef15bf2a396492eb5108ce99e9fb039a2",
               "key_id": "prod-1",
               "size": 3794301
+            }
+          ]
+        },
+        {
+          "version": "0.1.15",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-lutron-v0.1.15/plugin.lutron-0.1.15-linux-x86_64.tar.zst",
+              "sha256": "8ef1782e542546738e7a4ffd14aa616e13e401041f3450027d3290b43d6b93ed",
+              "key_id": "prod-1",
+              "size": 3788718
             }
           ]
         }
