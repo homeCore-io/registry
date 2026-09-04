@@ -676,7 +676,7 @@
     {
       "id": "plugin.sonos",
       "name": "Sonos",
-      "description": "",
+      "description": "Sonos speakers as media players, discovered over UPnP",
       "category": "",
       "versions": [
         {
@@ -754,6 +754,19 @@
               "sha256": "3bf58130ad952df4edf7751a25fe484fa610cbc7dc52e0df95c31334f750a136",
               "key_id": "prod-1",
               "size": 2848287
+            }
+          ]
+        },
+        {
+          "version": "0.1.12",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-sonos-v0.1.12/plugin.sonos-0.1.12-linux-x86_64.tar.zst",
+              "sha256": "c1d08f418b8dc75ec0110204505c97640935a8d6c83ddcb17ccde2c5b5e7de72",
+              "key_id": "prod-1",
+              "size": 2871419
             }
           ]
         }
