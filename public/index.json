@@ -1136,6 +1136,19 @@
               "size": 4063842
             }
           ]
+        },
+        {
+          "version": "0.1.13",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.13/plugin.wled-0.1.13-linux-x86_64.tar.zst",
+              "sha256": "f6e184a330a0df0a317e5e1370fe2c3cae186fe9a8b3b76b1e16fd9ef85c9763",
+              "key_id": "prod-1",
+              "size": 4058955
+            }
+          ]
         }
       ]
     },
