@@ -610,6 +610,19 @@
               "size": 3796980
             }
           ]
+        },
+        {
+          "version": "0.1.17",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-lutron-v0.1.17/plugin.lutron-0.1.17-linux-x86_64.tar.zst",
+              "sha256": "96c42e9cfd5922d097b2eca0a8468990ad3b4ac62b80296734e19f57c0ab18e0",
+              "key_id": "prod-1",
+              "size": 3807294
+            }
+          ]
         }
       ]
     },
