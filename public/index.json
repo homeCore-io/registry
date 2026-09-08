@@ -261,6 +261,19 @@
               "size": 4002269
             }
           ]
+        },
+        {
+          "version": "0.1.15",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.15/plugin.ecowitt-0.1.15-linux-x86_64.tar.zst",
+              "sha256": "03b7028e377435b4570d9a7defc61693b0ab6b8797f904612e4096555df800e6",
+              "key_id": "prod-1",
+              "size": 4003302
+            }
+          ]
         }
       ]
     },
