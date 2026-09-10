@@ -438,6 +438,19 @@
               "size": 3994822
             }
           ]
+        },
+        {
+          "version": "0.1.15",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-hue-v0.1.15/plugin.hue-0.1.15-linux-x86_64.tar.zst",
+              "sha256": "254bb8e0e1d541471cdd2c2b9c5fb18f0e032c1bfcffd073f0f79594387a2e05",
+              "key_id": "prod-1",
+              "size": 4040234
+            }
+          ]
         }
       ]
     },
