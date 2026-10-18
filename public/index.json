@@ -1074,7 +1074,7 @@
     {
       "id": "plugin.thermostat",
       "name": "Thermostat",
-      "description": "",
+      "description": "Software thermostats that read temperature sensors and drive a switch to a setpoint",
       "category": "",
       "versions": [
         {
@@ -1178,6 +1178,19 @@
               "sha256": "a6ed6bd29bfd150e1a73b0d1eea7cf20bd77ee1d1cd952219c26c50c8c679c6c",
               "key_id": "prod-1",
               "size": 1870912
+            }
+          ]
+        },
+        {
+          "version": "0.1.14",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-thermostat-v0.1.14/plugin.thermostat-0.1.14-linux-x86_64.tar.zst",
+              "sha256": "a89b38e0e1befef984df9beb513a545f0d62c4dabcf9804d23346fc730d038b0",
+              "key_id": "prod-1",
+              "size": 1871936
             }
           ]
         }
