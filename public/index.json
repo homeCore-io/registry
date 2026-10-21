@@ -3,8 +3,8 @@
   "plugins": [
     {
       "id": "plugin.caseta",
-      "name": "Caseta",
-      "description": "Lutron Caseta dimmers, switches and Pico remotes, via a Smart Bridge Pro over LIP",
+      "name": "Cas\u00e9ta",
+      "description": "Lutron Cas\u00e9ta dimmers, switches and Pico remotes, via a Smart Bridge Pro over LIP",
       "category": "",
       "versions": [
         {
@@ -134,6 +134,19 @@
               "sha256": "3a8f40d5c40980f9ec7843d06c7c6c3347654010d6faa74d76402f78017a2d01",
               "key_id": "prod-1",
               "size": 1864856
+            }
+          ]
+        },
+        {
+          "version": "0.1.15",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-caseta-v0.1.15/plugin.caseta-0.1.15-linux-x86_64.tar.zst",
+              "sha256": "7d770fabdfff4b5820dee39b867c6c15c2c72513c3ad71dd2eb4efcf511eb75b",
+              "key_id": "prod-1",
+              "size": 2082872
             }
           ]
         }
