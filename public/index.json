@@ -1727,7 +1727,7 @@
     {
       "id": "plugin.yolink",
       "name": "Yolink",
-      "description": "YoLink door, motion and temperature sensors, over the YoLink cloud MQTT service",
+      "description": "YoLink sensors, locks and plugs, through a YS1606 local hub or the YoLink cloud",
       "category": "",
       "versions": [
         {
@@ -1870,6 +1870,19 @@
               "sha256": "21db2a2eae247f0b36733c7cea0f16cc710d1919e53faa43c04602b22e33703e",
               "key_id": "prod-1",
               "size": 3595399
+            }
+          ]
+        },
+        {
+          "version": "0.1.17",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-yolink-v0.1.17/plugin.yolink-0.1.17-linux-x86_64.tar.zst",
+              "sha256": "1e41c7c26b838be2850e5db3881cd90687a0f6d2ae2e566779c0c982437a4d06",
+              "key_id": "prod-1",
+              "size": 3792573
             }
           ]
         }
