@@ -1726,7 +1726,7 @@
     },
     {
       "id": "plugin.yolink",
-      "name": "Yolink",
+      "name": "YoLink",
       "description": "YoLink sensors, locks and plugs, through a YS1606 local hub or the YoLink cloud",
       "category": "",
       "versions": [
