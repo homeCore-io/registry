@@ -1549,7 +1549,7 @@
     },
     {
       "id": "plugin.wled",
-      "name": "Wled",
+      "name": "WLED",
       "description": "WLED LED controllers, discovered on the network over mDNS",
       "category": "",
       "versions": [
@@ -1797,6 +1797,19 @@
               "sha256": "a1f350c7b34795e369aec631f67d89c184c115fd41cb2de722815e0692fadb85",
               "key_id": "prod-1",
               "size": 4567074
+            }
+          ]
+        },
+        {
+          "version": "0.1.24",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.24/plugin.wled-0.1.24-linux-x86_64.tar.zst",
+              "sha256": "c4d5531332a4a16cab64dc716e891e3fc777e7050ae943c2aadc410f0745efce",
+              "key_id": "prod-1",
+              "size": 4573364
             }
           ]
         }
