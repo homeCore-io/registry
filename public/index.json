@@ -2041,6 +2041,19 @@
               "size": 3796268
             }
           ]
+        },
+        {
+          "version": "0.1.19",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-yolink-v0.1.19/plugin.yolink-0.1.19-linux-x86_64.tar.zst",
+              "sha256": "ce9b3a8cf82fc632c350e1b9945a829b00cbe464a892be85ac080beca5c18aa0",
+              "key_id": "prod-1",
+              "size": 3798314
+            }
+          ]
         }
       ]
     },
