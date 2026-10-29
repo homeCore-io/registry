@@ -2283,6 +2283,19 @@
               "size": 2430544
             }
           ]
+        },
+        {
+          "version": "0.1.20",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-zwave-v0.1.20/plugin.zwave-0.1.20-linux-x86_64.tar.zst",
+              "sha256": "d04f089ccbbe1b6e602f68e644dd2c7325a9844234959648b85ac35cfc59f1b2",
+              "key_id": "prod-1",
+              "size": 2430738
+            }
+          ]
         }
       ]
     }
