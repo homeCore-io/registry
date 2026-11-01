@@ -1639,6 +1639,27 @@
       ]
     },
     {
+      "id": "plugin.weather",
+      "name": "Weather",
+      "description": "Weather for a place: Open-Meteo's conditions, forecast and air quality, and the national weather service's warnings as homeCore alerts",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-weather-v0.1.0/plugin.weather-0.1.0-linux-x86_64.tar.zst",
+              "sha256": "fe8e929f3f435cb560d1771f7174a340d082dce065d24450f7e8df60d92c9157",
+              "key_id": "prod-1",
+              "size": 3491608
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.wled",
       "name": "WLED",
       "description": "WLED LED controllers, discovered on the network over mDNS",
