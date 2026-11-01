@@ -1056,6 +1056,27 @@
       ]
     },
     {
+      "id": "plugin.nuheat",
+      "name": "Nuheat",
+      "description": "NuHeat Signature floor-heating thermostats, via the NuHeat OpenAPI",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-nuheat-v0.1.0/plugin.nuheat-0.1.0-linux-x86_64.tar.zst",
+              "sha256": "1715f464951cdaa404e713d88e1387bd57f93fac31d6524bed8d56c7be43fb03",
+              "key_id": "prod-1",
+              "size": 3861849
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.roku",
       "name": "Roku",
       "description": "Roku streaming players and Roku TVs, over the External Control Protocol",
