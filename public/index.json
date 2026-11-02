@@ -1056,6 +1056,27 @@
       ]
     },
     {
+      "id": "plugin.mysa",
+      "name": "Mysa",
+      "description": "Mysa thermostats, via the Mysa Consumer API",
+      "category": "",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-mysa-v0.1.0/plugin.mysa-0.1.0-linux-x86_64.tar.zst",
+              "sha256": "d950cc39e459dcf2466de7434f4ca4b11e0c2ca173c69c959166dadf3bfc9b91",
+              "key_id": "prod-1",
+              "size": 3931894
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.nuheat",
       "name": "Nuheat",
       "description": "NuHeat Signature floor-heating thermostats, via the NuHeat OpenAPI",
