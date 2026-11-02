@@ -1073,6 +1073,19 @@
               "size": 3861849
             }
           ]
+        },
+        {
+          "version": "0.1.1",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-nuheat-v0.1.1/plugin.nuheat-0.1.1-linux-x86_64.tar.zst",
+              "sha256": "72e9cdc3b2da61991767fd8effeb098cdf227260a8824ee0d2ae0b71a877f91a",
+              "key_id": "prod-1",
+              "size": 3856516
+            }
+          ]
         }
       ]
     },
