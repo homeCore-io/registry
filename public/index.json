@@ -1677,6 +1677,19 @@
               "size": 3491608
             }
           ]
+        },
+        {
+          "version": "0.1.1",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-weather-v0.1.1/plugin.weather-0.1.1-linux-x86_64.tar.zst",
+              "sha256": "ffe7eb621af331760110cbcfc7f3e2f38bdd2b8cf8a75af03dbe7c358dfd6707",
+              "key_id": "prod-1",
+              "size": 3668100
+            }
+          ]
         }
       ]
     },
