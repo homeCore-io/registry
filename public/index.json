@@ -1078,9 +1078,9 @@
     },
     {
       "id": "plugin.nuheat",
-      "name": "Nuheat",
+      "name": "Nuheat Signature",
       "description": "NuHeat Signature floor-heating thermostats, via the NuHeat OpenAPI",
-      "category": "",
+      "category": "Climate",
       "versions": [
         {
           "version": "0.1.0",
