@@ -411,7 +411,7 @@
       "id": "plugin.hue",
       "name": "Hue",
       "description": "Philips Hue lights, groups and scenes, via the Hue bridge",
-      "category": "",
+      "category": "Lighting",
       "versions": [
         {
           "version": "0.1.4",
