@@ -817,7 +817,7 @@
       "id": "plugin.lutron",
       "name": "Lutron",
       "description": "Lutron RadioRA2 dimmers, switches and scenes, over telnet to the main repeater",
-      "category": "",
+      "category": "Lighting",
       "versions": [
         {
           "version": "0.1.4",
