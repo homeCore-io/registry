@@ -156,7 +156,7 @@
       "id": "plugin.ecowitt",
       "name": "Ecowitt",
       "description": "Ecowitt weather stations, with sensors discovered from the gateway's data stream",
-      "category": "",
+      "category": "Weather",
       "versions": [
         {
           "version": "0.1.4",
