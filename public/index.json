@@ -1114,7 +1114,7 @@
       "id": "plugin.roku",
       "name": "Roku",
       "description": "Roku streaming players and Roku TVs, over the External Control Protocol",
-      "category": "",
+      "category": "Media",
       "versions": [
         {
           "version": "0.1.0",
