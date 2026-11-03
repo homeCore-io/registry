@@ -65,8 +65,11 @@ jobs:
             get() { printf '%s' "$P" | python3 -c "import json,sys;print(json.load(sys.stdin).get('$1',''))"; }
             id=$(get id); name=$(get name); version=$(get version)
             url=$(get url); sha256=$(get sha256); size=$(get size)
-            values=$(get values); description=$(get description)
-            category=$(get category); min_app=$(get min_app)
+            values=$(get values)
+            # Nested under `about` (GitHub takes at most 10 top-level fields in a
+            # dispatch); top-level still read, from an older release workflow.
+            about() { printf '%s' "$P" | python3 -c "import json,sys;d=json.load(sys.stdin);print((d.get('about') or {}).get('$1') or d.get('$1',''))"; }
+            description=$(about description); category=$(about category); min_app=$(about min_app)
             # Nested, as GitHub takes at most 10 top-level fields in a dispatch.
             preview_url=$(printf '%s' "$P" | python3 -c "import json,sys;print((json.load(sys.stdin).get('preview') or {}).get('url',''))")
             preview_sha256=$(printf '%s' "$P" | python3 -c "import json,sys;print((json.load(sys.stdin).get('preview') or {}).get('sha256',''))")
