@@ -67,7 +67,9 @@ jobs:
             url=$(get url); sha256=$(get sha256); size=$(get size)
             values=$(get values); description=$(get description)
             category=$(get category); min_app=$(get min_app)
-            preview_url=$(get preview_url); preview_sha256=$(get preview_sha256)
+            # Nested, as GitHub takes at most 10 top-level fields in a dispatch.
+            preview_url=$(printf '%s' "$P" | python3 -c "import json,sys;print((json.load(sys.stdin).get('preview') or {}).get('url',''))")
+            preview_sha256=$(printf '%s' "$P" | python3 -c "import json,sys;print((json.load(sys.stdin).get('preview') or {}).get('sha256',''))")
           else
             id="$IN_ID"; name="$IN_NAME"; version="$IN_VERSION"
             url="$IN_URL"; sha256="$IN_SHA256"; size="$IN_SIZE"
