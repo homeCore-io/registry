@@ -1317,7 +1317,7 @@
       "id": "plugin.sonos",
       "name": "Sonos",
       "description": "Sonos speakers as media players, discovered over UPnP",
-      "category": "",
+      "category": "Media",
       "versions": [
         {
           "version": "0.1.4",
