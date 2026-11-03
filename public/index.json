@@ -1507,7 +1507,7 @@
       "id": "plugin.thermostat",
       "name": "Thermostat",
       "description": "Software thermostats that read temperature sensors and drive a switch to a setpoint",
-      "category": "",
+      "category": "Climate",
       "versions": [
         {
           "version": "0.1.6",
