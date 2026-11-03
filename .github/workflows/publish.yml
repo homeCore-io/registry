@@ -19,7 +19,7 @@ on:
       description: { description: "One-line summary for the plugin's catalog card (optional; blank keeps the indexed one)", default: '' }
       runtime: { description: 'native (default) or a runtime kind such as python', default: 'native' }
       abi: { description: 'ABI tag for a runtime artifact, e.g. cp312-manylinux_2_28. Empty for native.', default: '' }
-      category: { description: 'Store category, e.g. Lighting (optional; blank keeps the indexed one)', default: '' }
+      category: { description: 'Catalog category, e.g. Lighting (optional; blank keeps the indexed one)', default: '' }
   repository_dispatch:
     types: [publish-plugin]
 

@@ -17,7 +17,7 @@ on:
       size: { description: 'Size in bytes', default: '0' }
       values: { description: 'Version of the values its drawings expect', default: '1' }
       description: { description: 'One-line summary (optional; blank keeps the indexed one)', default: '' }
-      category: { description: 'Store category, e.g. Thermostats (optional; blank keeps it)', default: '' }
+      category: { description: 'Catalog category, e.g. Thermostats (optional; blank keeps it)', default: '' }
       min_app: { description: 'Oldest hc-web that can install it (optional)', default: '' }
   repository_dispatch:
     types: [publish-extension]

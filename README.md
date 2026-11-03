@@ -76,6 +76,6 @@ the `publish-extension` workflow indexes, signs and commits it. Manual: **Action
 
 ## Categories
 
-Both indexes carry a `category` per entry, which the Store groups by. A plugin
+Both indexes carry a `category` per entry, which the Catalog groups by. A plugin
 release may send one (`category` in the dispatch payload, or the manual
 input); blank keeps what the index has.

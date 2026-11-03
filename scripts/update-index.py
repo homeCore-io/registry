@@ -12,7 +12,7 @@ the exact bytes this writes.
 UI's registry browser. It is plugin-level rather than version-level: the newest
 release to carry one wins.
 
-`category` groups the plugin in the web app's Store (Lighting, Media, …);
+`category` groups the plugin in the web app's Catalog (Lighting, Media, …);
 like `description` it is plugin-level, and blank keeps the indexed one.
 
 `runtime` and `abi` describe artifacts that are not native binaries. `runtime`
