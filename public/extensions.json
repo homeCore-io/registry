@@ -4,8 +4,8 @@
     {
       "id": "hc-thermostat",
       "name": "Animated thermostat",
-      "description": "",
-      "category": "",
+      "description": "The thermostat card drawn with Rive: heat rises and frost falls while it works, and the dial eases to a new target.",
+      "category": "Thermostats",
       "versions": [
         {
           "version": "0.1.0",
