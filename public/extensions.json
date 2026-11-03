@@ -23,6 +23,7 @@
           "sha256": "c71ae394d5057b9301a368a620fd772a7db7f3d44ba756fc29ab0910e987cd59",
           "key_id": "prod-1",
           "size": 21331,
+          "min_app": "0.1.47",
           "preview": {
             "url": "https://github.com/homeCore-io/hc-extensions/releases/download/hc-gauge-v0.1.1/hc-gauge-0.1.1-preview.png",
             "sha256": "9b5e0b33a4c7bb68f1e1f1da3840e073653b2768dffb1180b203be2d794afd48"
