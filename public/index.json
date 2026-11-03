@@ -2202,7 +2202,7 @@
       "id": "plugin.zwave",
       "name": "Z-Wave",
       "description": "Z-Wave locks, dimmers, switches and sensors, through a zwave-js server",
-      "category": "",
+      "category": "Hubs",
       "versions": [
         {
           "version": "0.1.4",
