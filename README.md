@@ -64,6 +64,10 @@ download and no os or arch:
                     "key_id": "prod-1", "size": 210000, "min_app": "0.2.0" } ] } ] }
 ```
 
+A version may carry `preview` (`{url, sha256}`), a picture or short video of
+how it looks. The app fetches it, checks the checksum, and shows it in the
+Catalog before anything is installed.
+
 `values` is the version of the values the app gives its drawings; an app that
 only knows an older one leaves that version out. The file is a `.tar.zst` or a
 `.zip` holding the extension's directory contents (`extension.json` at its

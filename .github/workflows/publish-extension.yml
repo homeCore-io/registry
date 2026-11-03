@@ -19,6 +19,8 @@ on:
       description: { description: 'One-line summary (optional; blank keeps the indexed one)', default: '' }
       category: { description: 'Catalog category, e.g. Thermostats (optional; blank keeps it)', default: '' }
       min_app: { description: 'Oldest hc-web that can install it (optional)', default: '' }
+      preview_url: { description: 'A picture or short video of how it looks (optional)', default: '' }
+      preview_sha256: { description: 'Hex sha256 of the preview (with preview_url)', default: '' }
   repository_dispatch:
     types: [publish-extension]
 
@@ -55,6 +57,8 @@ jobs:
           IN_DESCRIPTION: ${{ inputs.description }}
           IN_CATEGORY: ${{ inputs.category }}
           IN_MIN_APP: ${{ inputs.min_app }}
+          IN_PREVIEW_URL: ${{ inputs.preview_url }}
+          IN_PREVIEW_SHA256: ${{ inputs.preview_sha256 }}
         run: |
           set -euo pipefail
           if [ "$EV" = "repository_dispatch" ]; then
@@ -63,15 +67,17 @@ jobs:
             url=$(get url); sha256=$(get sha256); size=$(get size)
             values=$(get values); description=$(get description)
             category=$(get category); min_app=$(get min_app)
+            preview_url=$(get preview_url); preview_sha256=$(get preview_sha256)
           else
             id="$IN_ID"; name="$IN_NAME"; version="$IN_VERSION"
             url="$IN_URL"; sha256="$IN_SHA256"; size="$IN_SIZE"
             values="$IN_VALUES"; description="$IN_DESCRIPTION"
             category="$IN_CATEGORY"; min_app="$IN_MIN_APP"
+            preview_url="$IN_PREVIEW_URL"; preview_sha256="$IN_PREVIEW_SHA256"
           fi
           [ -n "$id" ] && [ -n "$version" ] && [ -n "$url" ] && [ -n "$sha256" ] || {
             echo "::error::id, version, url and sha256 are required"; exit 1; }
-          for k in id name version url sha256 size values category min_app; do
+          for k in id name version url sha256 size values category min_app preview_url preview_sha256; do
             printf '%s=%s\n' "$k" "${!k}" >> "$GITHUB_OUTPUT"
           done
           { echo "description<<__HC_DESC__"
@@ -91,6 +97,8 @@ jobs:
           DESCRIPTION: ${{ steps.in.outputs.description }}
           CATEGORY: ${{ steps.in.outputs.category }}
           MIN_APP: ${{ steps.in.outputs.min_app }}
+          PREVIEW_URL: ${{ steps.in.outputs.preview_url }}
+          PREVIEW_SHA256: ${{ steps.in.outputs.preview_sha256 }}
         run: |
           set -euo pipefail
           git config user.name  "homecore-registry[bot]"
@@ -98,7 +106,7 @@ jobs:
           for attempt in 1 2 3 4 5; do
             python scripts/update-extensions.py public/extensions.json \
               "$ID" "$NAME" "$VERSION" "$URL" "$SHA256" "$SIZE" "$VALUES" \
-              "$DESCRIPTION" "$CATEGORY" "$MIN_APP"
+              "$DESCRIPTION" "$CATEGORY" "$MIN_APP" "$PREVIEW_URL" "$PREVIEW_SHA256"
             python scripts/sign-index.py public/extensions.json
 
             git add public/extensions.json public/extensions.json.sig

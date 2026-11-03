@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Add or replace one UI extension release in the extensions index.
 
-    python scripts/update-extensions.py <extensions.json> <id> <name> <version> <url> <sha256> [size] [values] [description] [category] [min_app]
+    python scripts/update-extensions.py <extensions.json> <id> <name> <version> <url> <sha256> [size] [values] [description] [category] [min_app] [preview_url] [preview_sha256]
 
 The web app's UI extensions have an index of their own, signed with the same
 key as the plugins' (sign-index.py), so homeCore never reads it: the app
@@ -10,7 +10,9 @@ fetches it, checks the signature, and installs extensions itself.
 An extension is the same file on every machine, so a version has one artifact
 and no os or arch. `values` is the version of the values the app gives its
 drawings that this release expects; an app that only knows an older one leaves
-it out. `min_app` is the oldest hc-web that can install it. `description` and
+it out. `min_app` is the oldest hc-web that can install it. `preview_url` and
+`preview_sha256` are a picture or short video of how it looks, which the app
+shows before installing, and only if it matches the checksum. `description` and
 `category` are extension-level: blank keeps the indexed one.
 
 Writes stable, sorted JSON, so re-running it over the same release changes
@@ -30,6 +32,10 @@ values = int(arg(8) or 1)
 description = arg(9)
 category = arg(10)
 min_app = arg(11)
+preview_url = arg(12)
+preview_sha256 = arg(13).lower()
+if bool(preview_url) != bool(preview_sha256):
+    sys.exit("a preview needs both its url and its sha256")
 
 idx = json.load(open(path)) if os.path.exists(path) else {"schema": "1", "extensions": []}
 idx.setdefault("schema", "1")
@@ -50,6 +56,8 @@ if size:
     rel["size"] = size
 if min_app:
     rel["min_app"] = min_app
+if preview_url:
+    rel["preview"] = {"url": preview_url, "sha256": preview_sha256}
 ext["versions"] = [v for v in ext["versions"] if v["version"] != version] + [rel]
 
 idx["extensions"].sort(key=lambda x: x["id"])
