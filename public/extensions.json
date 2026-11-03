@@ -30,6 +30,18 @@
           "sha256": "1680f73b9c904b88f038b63df6fe3d052685ff7de62e7dcf22ab128741b8d988",
           "key_id": "prod-1",
           "size": 81324
+        },
+        {
+          "version": "0.1.1",
+          "values": 1,
+          "url": "https://github.com/homeCore-io/hc-extensions/releases/download/hc-thermostat-v0.1.1/hc-thermostat-0.1.1.tar.zst",
+          "sha256": "13f67371bf8c295bcf1b3d321be6b58a85fb19a271389a2290f0740f3e1e2c6c",
+          "key_id": "prod-1",
+          "size": 332106,
+          "preview": {
+            "url": "https://github.com/homeCore-io/hc-extensions/releases/download/hc-thermostat-v0.1.1/hc-thermostat-0.1.1-preview.mp4",
+            "sha256": "7a75661572da3ec976eb62c039302141fc08ea9359a6a2ee54f4b00da3b12bde"
+          }
         }
       ]
     }
