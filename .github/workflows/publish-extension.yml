@@ -1,0 +1,130 @@
+name: Publish UI extension to registry
+
+# Add/replace one UI extension release in extensions.json, sign it, and commit.
+# The web app reads this index, not homeCore. Called two ways:
+#   - repository_dispatch(publish-extension) from an hc-extensions release, or
+#   - workflow_dispatch (manual) with the same fields.
+# See publish.yml for why there is no concurrency group, and why the commit
+# step re-applies onto the fetched index instead of rebasing.
+on:
+  workflow_dispatch:
+    inputs:
+      id: { description: 'Extension id (e.g. hc-thermostat)', required: true }
+      name: { description: 'Display name', required: true }
+      version: { description: 'Semver (no leading v)', required: true }
+      url: { description: 'Download URL (GH release asset, .tar.zst or .zip)', required: true }
+      sha256: { description: 'Hex sha256 of the file', required: true }
+      size: { description: 'Size in bytes', default: '0' }
+      values: { description: 'Version of the values its drawings expect', default: '1' }
+      description: { description: 'One-line summary (optional; blank keeps the indexed one)', default: '' }
+      category: { description: 'Store category, e.g. Thermostats (optional; blank keeps it)', default: '' }
+      min_app: { description: 'Oldest hc-web that can install it (optional)', default: '' }
+  repository_dispatch:
+    types: [publish-extension]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet cryptography
+
+      - name: Resolve inputs (dispatch vs manual)
+        id: in
+        env:
+          EV: ${{ github.event_name }}
+          P: ${{ toJson(github.event.client_payload) }}
+          IN_ID: ${{ inputs.id }}
+          IN_NAME: ${{ inputs.name }}
+          IN_VERSION: ${{ inputs.version }}
+          IN_URL: ${{ inputs.url }}
+          IN_SHA256: ${{ inputs.sha256 }}
+          IN_SIZE: ${{ inputs.size }}
+          IN_VALUES: ${{ inputs.values }}
+          IN_DESCRIPTION: ${{ inputs.description }}
+          IN_CATEGORY: ${{ inputs.category }}
+          IN_MIN_APP: ${{ inputs.min_app }}
+        run: |
+          set -euo pipefail
+          if [ "$EV" = "repository_dispatch" ]; then
+            get() { printf '%s' "$P" | python3 -c "import json,sys;print(json.load(sys.stdin).get('$1',''))"; }
+            id=$(get id); name=$(get name); version=$(get version)
+            url=$(get url); sha256=$(get sha256); size=$(get size)
+            values=$(get values); description=$(get description)
+            category=$(get category); min_app=$(get min_app)
+          else
+            id="$IN_ID"; name="$IN_NAME"; version="$IN_VERSION"
+            url="$IN_URL"; sha256="$IN_SHA256"; size="$IN_SIZE"
+            values="$IN_VALUES"; description="$IN_DESCRIPTION"
+            category="$IN_CATEGORY"; min_app="$IN_MIN_APP"
+          fi
+          [ -n "$id" ] && [ -n "$version" ] && [ -n "$url" ] && [ -n "$sha256" ] || {
+            echo "::error::id, version, url and sha256 are required"; exit 1; }
+          for k in id name version url sha256 size values category min_app; do
+            printf '%s=%s\n' "$k" "${!k}" >> "$GITHUB_OUTPUT"
+          done
+          { echo "description<<__HC_DESC__"
+            printf '%s\n' "$description"
+            echo "__HC_DESC__"; } >> "$GITHUB_OUTPUT"
+
+      - name: Update, sign and commit the index
+        env:
+          REGISTRY_SECRET_KEY: ${{ secrets.REGISTRY_SECRET_KEY }}
+          ID: ${{ steps.in.outputs.id }}
+          NAME: ${{ steps.in.outputs.name }}
+          VERSION: ${{ steps.in.outputs.version }}
+          URL: ${{ steps.in.outputs.url }}
+          SHA256: ${{ steps.in.outputs.sha256 }}
+          SIZE: ${{ steps.in.outputs.size }}
+          VALUES: ${{ steps.in.outputs.values }}
+          DESCRIPTION: ${{ steps.in.outputs.description }}
+          CATEGORY: ${{ steps.in.outputs.category }}
+          MIN_APP: ${{ steps.in.outputs.min_app }}
+        run: |
+          set -euo pipefail
+          git config user.name  "homecore-registry[bot]"
+          git config user.email "registry@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            python scripts/update-extensions.py public/extensions.json \
+              "$ID" "$NAME" "$VERSION" "$URL" "$SHA256" "$SIZE" "$VALUES" \
+              "$DESCRIPTION" "$CATEGORY" "$MIN_APP"
+            python scripts/sign-index.py public/extensions.json
+
+            git add public/extensions.json public/extensions.json.sig
+            if git diff --cached --quiet; then
+              echo "index already carries this release — nothing to do"
+              exit 0
+            fi
+            git commit -q -m "registry: extension ${ID} ${VERSION}"
+            if git push -q; then
+              echo "index updated on attempt ${attempt}"
+              exit 0
+            fi
+            echo "::notice::push rejected (attempt ${attempt}); re-applying onto the current index"
+            git reset --hard HEAD~1
+            git fetch -q origin "${GITHUB_REF_NAME:-main}"
+            git reset --hard "origin/${GITHUB_REF_NAME:-main}"
+            sleep $(( attempt * 3 ))
+          done
+          echo "::error::could not update the index after 5 attempts. Re-run this workflow."
+          exit 1
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+
+      - name: Deploy Pages
+        id: deploy
+        uses: actions/deploy-pages@v5

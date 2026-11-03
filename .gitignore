@@ -4,3 +4,4 @@
 *.pem
 *seed*
 registry-signing-key*
+__pycache__/

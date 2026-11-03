@@ -43,3 +43,39 @@ same fields.
 
 The signature is over the **raw bytes** of `index.json` — never reformat it
 between signing and serving, or verification fails.
+
+## UI extensions (`extensions.json`)
+
+The web app's UI extensions (drawings and cards its looks can choose, from the
+`hc-extensions` repo) have an index of their own, `public/extensions.json` +
+`extensions.json.sig`, signed with the same key over the exact bytes. homeCore
+never reads it: the app fetches it, verifies it with the same public key,
+downloads an extension, checks its `sha256`, and unpacks it into its own data
+directory.
+
+An extension is the same file on every machine, so each version has one
+download and no os or arch:
+
+```json
+{ "schema": "1", "extensions": [
+  { "id": "hc-thermostat", "name": "Animated thermostat", "description": "…",
+    "category": "Thermostats",
+    "versions": [ { "version": "0.1.0", "values": 1, "url": "…", "sha256": "…",
+                    "key_id": "prod-1", "size": 210000, "min_app": "0.2.0" } ] } ] }
+```
+
+`values` is the version of the values the app gives its drawings; an app that
+only knows an older one leaves that version out. The file is a `.tar.zst` or a
+`.zip` holding the extension's directory contents (`extension.json` at its
+root).
+
+Publishing: an `hc-extensions` release fires `repository_dispatch(publish-extension)`
+with `{id, name, version, url, sha256, size?, values?, description?, category?, min_app?}`;
+the `publish-extension` workflow indexes, signs and commits it. Manual: **Actions →
+"Publish UI extension to registry"**.
+
+## Categories
+
+Both indexes carry a `category` per entry, which the Store groups by. A plugin
+release may send one (`category` in the dispatch payload, or the manual
+input); blank keeps what the index has.

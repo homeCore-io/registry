@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Add or replace one artifact entry in the registry index.
 
-    python scripts/update-index.py <index.json> <id> <name> <version> <os> <arch> <url> <sha256> [size] [min_core] [description] [runtime] [abi]
+    python scripts/update-index.py <index.json> <id> <name> <version> <os> <arch> <url> <sha256> [size] [min_core] [description] [runtime] [abi] [category]
 
 Idempotent: replaces the artifact for the same (id, version, os, arch, runtime,
 abi), creating the plugin/version entries as needed. Writes stable, sorted JSON
@@ -11,6 +11,9 @@ the exact bytes this writes.
 `description` is the plugin's one-line summary, shown on its card in the web
 UI's registry browser. It is plugin-level rather than version-level: the newest
 release to carry one wins.
+
+`category` groups the plugin in the web app's Store (Lighting, Media, …);
+like `description` it is plugin-level, and blank keeps the indexed one.
 
 `runtime` and `abi` describe artifacts that are not native binaries. `runtime`
 defaults to "native", which is what every entry published before plugin
@@ -23,7 +26,6 @@ include the ABI or one would silently replace the other.
 import functools
 import json
 import os
-import re
 import sys
 
 (path, pid, name, version, os_, arch, url, sha256) = sys.argv[1:9]
@@ -32,6 +34,7 @@ min_core = sys.argv[10] if len(sys.argv) > 10 else ""
 description = sys.argv[11] if len(sys.argv) > 11 else ""
 runtime = (sys.argv[12] if len(sys.argv) > 12 else "") or "native"
 abi = sys.argv[13] if len(sys.argv) > 13 else ""
+category = sys.argv[14] if len(sys.argv) > 14 else ""
 
 if runtime != "native" and not abi:
     sys.exit(f"a {runtime} artifact must carry an abi — without one it cannot be matched to a runtime")
@@ -52,6 +55,8 @@ plug["name"] = name
 if description:
     plug["description"] = description
 plug.setdefault("description", "")
+if category:
+    plug["category"] = category
 plug.setdefault("category", "")
 plug.setdefault("versions", [])
 
@@ -92,47 +97,7 @@ def same_artifact(a):
 ver["artifacts"] = [a for a in ver["artifacts"] if not same_artifact(a)]
 ver["artifacts"].append(art)
 
-def compare_versions(a, b):
-    """Order version strings by numeric segment, so 0.1.9 comes before 0.1.10.
-
-    This sorted on the raw string until 2026-08-07, which put "0.1.14" ahead of
-    "0.1.4" and left the newest release somewhere in the middle of the list.
-    Core read the last entry as the latest, so a fresh install of nine of the
-    eleven plugins pulled a version several releases old.
-
-    Same rules as core's `compare_versions` and hc-web's `compareVersions`, and
-    written the same way on purpose — all three decide part of "which version is
-    newest", and a clever sort key that disagreed in one edge case would be a
-    much harder bug to find than this loop is to read. Not full semver:
-
-      - segments split on `.`, `+` and `-`; numeric pairs compare numerically
-        and anything else compares as text, so a suffix is ordered not fatal,
-      - a numeric extra segment means more version (0.2 < 0.2.1), while a
-        non-numeric one is a pre-release of the release it leads to
-        (0.2.0-rc1 < 0.2.0).
-    """
-    x = [p for p in re.split(r"[.+-]", a) if p]
-    y = [p for p in re.split(r"[.+-]", b) if p]
-    for i in range(max(len(x), len(y))):
-        l = x[i] if i < len(x) else None
-        r = y[i] if i < len(y) else None
-        ln = int(l) if l is not None and l.isdigit() else None
-        rn = int(r) if r is not None and r.isdigit() else None
-
-        # One side ran out of segments: a numeric extra is more version, a
-        # non-numeric extra is a pre-release of what the other side is.
-        if l is None:
-            return -1 if rn is not None else 1
-        if r is None:
-            return 1 if ln is not None else -1
-
-        if ln is not None and rn is not None:
-            c = (ln > rn) - (ln < rn)
-        else:
-            c = (l > r) - (l < r)
-        if c:
-            return c
-    return 0
+from versions import compare_versions  # noqa: E402  (scripts/ is on the path)
 
 
 # Deterministic ordering so the signed bytes only change when content changes.
