@@ -1059,7 +1059,7 @@
       "id": "plugin.mysa",
       "name": "Mysa",
       "description": "Mysa thermostats, via the Mysa Consumer API",
-      "category": "",
+      "category": "Climate",
       "versions": [
         {
           "version": "0.1.0",
