@@ -1731,7 +1731,7 @@
       "id": "plugin.wled",
       "name": "WLED",
       "description": "WLED LED controllers, discovered on the network over mDNS",
-      "category": "",
+      "category": "Lighting",
       "versions": [
         {
           "version": "0.1.4",
