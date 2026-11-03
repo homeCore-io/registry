@@ -5,7 +5,7 @@
       "id": "plugin.caseta",
       "name": "Cas\u00e9ta",
       "description": "Lutron Cas\u00e9ta dimmers, switches and Pico remotes, via a Smart Bridge Pro over LIP",
-      "category": "",
+      "category": "Lighting",
       "versions": [
         {
           "version": "0.1.4",
