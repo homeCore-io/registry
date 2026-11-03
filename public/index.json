@@ -1697,7 +1697,7 @@
       "id": "plugin.weather",
       "name": "Weather",
       "description": "Weather for a place: Open-Meteo's conditions, forecast and air quality, and the national weather service's warnings as homeCore alerts",
-      "category": "",
+      "category": "Weather",
       "versions": [
         {
           "version": "0.1.0",
