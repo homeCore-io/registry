@@ -703,9 +703,9 @@
     },
     {
       "id": "plugin.isy",
-      "name": "Isy",
+      "name": "ISY",
       "description": "Insteon, Z-Wave and Zigbee devices behind a Universal Devices ISY/IoX hub",
-      "category": "",
+      "category": "Hubs",
       "versions": [
         {
           "version": "0.1.4",
