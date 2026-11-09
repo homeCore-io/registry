@@ -1111,6 +1111,27 @@
       ]
     },
     {
+      "id": "plugin.reolink",
+      "name": "Reolink",
+      "description": "Reolink cameras, NVRs and Home Hubs: detections, snapshots, spotlight, siren, PTZ, and live video through go2rtc",
+      "category": "Security",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-reolink-v0.1.0/plugin.reolink-0.1.0-linux-x86_64.tar.zst",
+              "sha256": "65389c94586d1633c868c8ff7a13151a2f7bc170d756f7038c7702fd047d63fb",
+              "key_id": "prod-1",
+              "size": 3734568
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "plugin.roku",
       "name": "Roku",
       "description": "Roku streaming players and Roku TVs, over the External Control Protocol",
