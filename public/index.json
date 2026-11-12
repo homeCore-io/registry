@@ -1154,6 +1154,19 @@
               "size": 3738369
             }
           ]
+        },
+        {
+          "version": "0.1.3",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-reolink-v0.1.3/plugin.reolink-0.1.3-linux-x86_64.tar.zst",
+              "sha256": "19d1a0bdb04f202bd3b434ff334504279c005af0dfbefeb8078d4bee14593450",
+              "key_id": "prod-1",
+              "size": 3763553
+            }
+          ]
         }
       ]
     },
