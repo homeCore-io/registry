@@ -888,6 +888,19 @@
               "size": 3748050
             }
           ]
+        },
+        {
+          "version": "0.1.13",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-isy-v0.1.13/plugin.isy-0.1.13-linux-x86_64.tar.zst",
+              "sha256": "037a7195d2f9c11944ba759058efb999a2ed6d2d0501fdc74a171f29bd5c1453",
+              "key_id": "prod-1",
+              "size": 3765315
+            }
+          ]
         }
       ]
     },
