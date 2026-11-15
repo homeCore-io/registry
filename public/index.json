@@ -1209,7 +1209,7 @@
     {
       "id": "plugin.nuheat",
       "name": "Nuheat Signature",
-      "description": "NuHeat Signature floor-heating thermostats, via the NuHeat OpenAPI",
+      "description": "Nuheat Signature floor-heating thermostats, via the Nuheat OpenAPI",
       "category": "Climate",
       "versions": [
         {
@@ -1235,6 +1235,19 @@
               "sha256": "72e9cdc3b2da61991767fd8effeb098cdf227260a8824ee0d2ae0b71a877f91a",
               "key_id": "prod-1",
               "size": 3856516
+            }
+          ]
+        },
+        {
+          "version": "0.1.2",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-nuheat-v0.1.2/plugin.nuheat-0.1.2-linux-x86_64.tar.zst",
+              "sha256": "3a352bda51bccc60c9cf41505e228cc017d8f56c448f7860519031a6c78dcf46",
+              "key_id": "prod-1",
+              "size": 3875694
             }
           ]
         }
