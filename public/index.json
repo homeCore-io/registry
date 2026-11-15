@@ -1971,6 +1971,19 @@
               "size": 2396189
             }
           ]
+        },
+        {
+          "version": "0.1.22",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-thermostat-v0.1.22/plugin.thermostat-0.1.22-linux-x86_64.tar.zst",
+              "sha256": "b7325ae2cc694609052f321eb75215a34fb6b46bc5b2e383eccea42d649b91aa",
+              "key_id": "prod-1",
+              "size": 2400175
+            }
+          ]
         }
       ]
     },
