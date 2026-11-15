@@ -1190,6 +1190,19 @@
               "size": 3931894
             }
           ]
+        },
+        {
+          "version": "0.1.1",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-mysa-v0.1.1/plugin.mysa-0.1.1-linux-x86_64.tar.zst",
+              "sha256": "4fa5449fbe0d5e73ca6e84a7461dfcab58fa9e5ea29fc6391ae7dc5b2923171c",
+              "key_id": "prod-1",
+              "size": 3941252
+            }
+          ]
         }
       ]
     },
