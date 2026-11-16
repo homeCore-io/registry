@@ -267,6 +267,21 @@
             }
           ],
           "min_core": "0.1.110"
+        },
+        {
+          "version": "0.1.2",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.2/plugin.mcp-0.1.2-python-cp312-manylinux_2_28-x86_64.tar.zst",
+              "sha256": "d9128484ceffb4ccbf51a88890e5e3e2f2e09123e46c99c567d31ebaf723ff9b",
+              "key_id": "prod-1",
+              "size": 12663965,
+              "runtime": "python",
+              "abi": "cp312-manylinux_2_28"
+            }
+          ]
         }
       ]
     },
