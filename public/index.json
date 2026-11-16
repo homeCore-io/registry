@@ -619,19 +619,6 @@
       "category": "Hubs",
       "versions": [
         {
-          "version": "0.1.19",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-yolink-v0.1.19/plugin.yolink-0.1.19-linux-x86_64.tar.zst",
-              "sha256": "ce9b3a8cf82fc632c350e1b9945a829b00cbe464a892be85ac080beca5c18aa0",
-              "key_id": "prod-1",
-              "size": 3798314
-            }
-          ]
-        },
-        {
           "version": "0.1.20",
           "artifacts": [
             {
@@ -654,6 +641,19 @@
               "sha256": "0e813dd5f7b8b162cc23b2bbf5dba8671393d84a3961c5dc357383a80b8c4a1a",
               "key_id": "prod-1",
               "size": 3814485
+            }
+          ]
+        },
+        {
+          "version": "0.1.22",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-yolink-v0.1.22/plugin.yolink-0.1.22-linux-x86_64.tar.zst",
+              "sha256": "c3f87e415b4fdcea8114cb3e6d874bd2dcaeb731625e2f33e09922a2856f648c",
+              "key_id": "prod-1",
+              "size": 3832229
             }
           ]
         }
