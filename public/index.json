@@ -237,6 +237,30 @@
       ]
     },
     {
+      "id": "plugin.mcp",
+      "name": "Assistant",
+      "description": "A chat in homeCore: ask about the house and set up automations, using Claude",
+      "category": "Tools",
+      "versions": [
+        {
+          "version": "0.1.1",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.1/plugin.mcp-0.1.1-python-cp312-manylinux_2_28-x86_64.tar.zst",
+              "sha256": "d7a5b47061f66d71c5e1d59a526d5001f317cab27341830f97b9c0e4c18fc544",
+              "key_id": "prod-1",
+              "size": 12661039,
+              "runtime": "python",
+              "abi": "cp312-manylinux_2_28"
+            }
+          ],
+          "min_core": "0.1.110"
+        }
+      ]
+    },
+    {
       "id": "plugin.mysa",
       "name": "Mysa",
       "description": "Mysa thermostats, via the Mysa Consumer API",
