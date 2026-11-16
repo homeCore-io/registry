@@ -431,19 +431,6 @@
       "category": "Media",
       "versions": [
         {
-          "version": "0.1.18",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-sonos-v0.1.18/plugin.sonos-0.1.18-linux-x86_64.tar.zst",
-              "sha256": "b045252bc41b13fa1c22686cecfb361f9bd5fd25e7882e80e3baa4e0cdc76154",
-              "key_id": "prod-1",
-              "size": 3206992
-            }
-          ]
-        },
-        {
           "version": "0.1.19",
           "artifacts": [
             {
@@ -466,6 +453,19 @@
               "sha256": "2dfe059a299cc8ae93d3ddb034c68cee08216bd45468722d77afb7acca295b0e",
               "key_id": "prod-1",
               "size": 3223307
+            }
+          ]
+        },
+        {
+          "version": "0.1.21",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-sonos-v0.1.21/plugin.sonos-0.1.21-linux-x86_64.tar.zst",
+              "sha256": "d54b80f1a25eabbdb4783ee6c89ad081934ab33f06b65b4f064462e2e52cb460",
+              "key_id": "prod-1",
+              "size": 3239181
             }
           ]
         }
