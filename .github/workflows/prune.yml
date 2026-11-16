@@ -1,0 +1,90 @@
+# Keep the newest few versions of each plugin and extension in the index.
+#
+# Manual, and a dry run unless asked otherwise: the run log lists what would
+# go. A version taken out of the index can no longer be installed or rolled
+# back to. publish.yml keeps the index at three from then on; this is for a
+# one-off cleanup, or after changing how many to keep.
+#
+# The GitHub releases those entries point at are pruned separately, with
+# hc-scripts/prune-releases.sh.
+name: Prune the index
+
+on:
+  workflow_dispatch:
+    inputs:
+      keep: { description: 'Versions to keep of each', default: '3' }
+      apply: { description: 'Write it (false: only list what would go)', type: boolean, default: false }
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# No concurrency group, for the reason publish.yml gives: the write step
+# re-applies onto the current index and retries instead.
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet cryptography
+
+      - name: What would go
+        env:
+          KEEP: ${{ inputs.keep }}
+        run: |
+          python scripts/prune-index.py public/index.json --keep "$KEEP" --dry-run
+          python scripts/prune-index.py public/extensions.json --keep "$KEEP" --dry-run
+
+      - name: Prune, sign and commit
+        id: write
+        if: ${{ inputs.apply }}
+        env:
+          KEEP: ${{ inputs.keep }}
+          REGISTRY_SECRET_KEY: ${{ secrets.REGISTRY_SECRET_KEY }}
+        run: |
+          set -euo pipefail
+          git config user.name  "homecore-registry[bot]"
+          git config user.email "registry@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            python scripts/prune-index.py public/index.json --keep "$KEEP"
+            python scripts/prune-index.py public/extensions.json --keep "$KEEP"
+            python scripts/sign-index.py public/index.json
+            python scripts/sign-index.py public/extensions.json
+            git add public/
+            if git diff --cached --quiet; then
+              echo "nothing to prune"
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -q -m "registry: keep the newest $KEEP versions of each"
+            if git push -q; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "::notice::push rejected (attempt ${attempt}); pruning the current index again"
+            git reset --hard HEAD~1
+            git fetch -q origin "${GITHUB_REF_NAME:-main}"
+            git reset --hard "origin/${GITHUB_REF_NAME:-main}"
+            sleep $(( attempt * 3 ))
+          done
+          echo "::error::could not write the index after 5 attempts; run this again"
+          exit 1
+
+      - name: Upload Pages artifact
+        if: ${{ inputs.apply && steps.write.outputs.changed == 'true' }}
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+
+      - name: Deploy Pages
+        id: deploy
+        if: ${{ inputs.apply && steps.write.outputs.changed == 'true' }}
+        uses: actions/deploy-pages@v5
