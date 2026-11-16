@@ -102,19 +102,6 @@
       "category": "Lighting",
       "versions": [
         {
-          "version": "0.2.6",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-hue-v0.2.6/plugin.hue-0.2.6-linux-x86_64.tar.zst",
-              "sha256": "a49d5a8167bf0d46103c4dd40bafcc8932659c61338d1c16d55de34d41a2c66b",
-              "key_id": "prod-1",
-              "size": 4277908
-            }
-          ]
-        },
-        {
           "version": "0.2.7",
           "artifacts": [
             {
@@ -137,6 +124,19 @@
               "sha256": "3e68398b23c06a623be74811161049a91f7115da300c76dffca1c89f0a9ddaf6",
               "key_id": "prod-1",
               "size": 4328784
+            }
+          ]
+        },
+        {
+          "version": "0.2.9",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-hue-v0.2.9/plugin.hue-0.2.9-linux-x86_64.tar.zst",
+              "sha256": "ca9822d01a1049f21ec0cc22e1b7fed347d8e758aeeac70f6f283fb87b385dc5",
+              "key_id": "prod-1",
+              "size": 4344101
             }
           ]
         }
