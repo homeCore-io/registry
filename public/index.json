@@ -525,19 +525,6 @@
       "category": "Weather",
       "versions": [
         {
-          "version": "0.1.1",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-weather-v0.1.1/plugin.weather-0.1.1-linux-x86_64.tar.zst",
-              "sha256": "ffe7eb621af331760110cbcfc7f3e2f38bdd2b8cf8a75af03dbe7c358dfd6707",
-              "key_id": "prod-1",
-              "size": 3668100
-            }
-          ]
-        },
-        {
           "version": "0.1.2",
           "artifacts": [
             {
@@ -560,6 +547,19 @@
               "sha256": "373e77cc4528774c5a557a4e9af58fa08d08aa999ba59a8fcb51f85c8d5cfaaf",
               "key_id": "prod-1",
               "size": 3682641
+            }
+          ]
+        },
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-weather-v0.1.4/plugin.weather-0.1.4-linux-x86_64.tar.zst",
+              "sha256": "6e42fd3275ba0731be43547b4452c1cca859261d7563bccbd5cb23bf634ece05",
+              "key_id": "prod-1",
+              "size": 3691227
             }
           ]
         }
