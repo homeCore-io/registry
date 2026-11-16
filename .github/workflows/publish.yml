@@ -82,7 +82,10 @@ jobs:
         run: |
           set -euo pipefail
           if [ "$EV" = "repository_dispatch" ]; then
-            get() { printf '%s' "$P" | python3 -c "import json,sys;print(json.load(sys.stdin).get('$1',''))"; }
+            # A field is top-level, or nested under `artifact` or `about`:
+            # GitHub caps a dispatch at 10 top-level fields, which a Python
+            # plugin's payload (runtime, abi) goes past.
+            get() { printf '%s' "$P" | python3 -c "import json,sys;p=json.load(sys.stdin);print(next((str(d[sys.argv[1]]) for d in (p,p.get('artifact') or {},p.get('about') or {}) if d.get(sys.argv[1]) not in (None,'')),''))" "$1"; }
             id=$(get id); name=$(get name); version=$(get version)
             os=$(get os); arch=$(get arch); url=$(get url)
             sha256=$(get sha256); size=$(get size); min_core=$(get min_core)
