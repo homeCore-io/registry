@@ -572,19 +572,6 @@
       "category": "Lighting",
       "versions": [
         {
-          "version": "0.1.23",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.23/plugin.wled-0.1.23-linux-x86_64.tar.zst",
-              "sha256": "a1f350c7b34795e369aec631f67d89c184c115fd41cb2de722815e0692fadb85",
-              "key_id": "prod-1",
-              "size": 4567074
-            }
-          ]
-        },
-        {
           "version": "0.1.24",
           "artifacts": [
             {
@@ -607,6 +594,19 @@
               "sha256": "1c90ec443cb197ddd77f7398cd59db8131e1d51eb9f75570b0337ad24ae01524",
               "key_id": "prod-1",
               "size": 4591290
+            }
+          ]
+        },
+        {
+          "version": "0.1.26",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-wled-v0.1.26/plugin.wled-0.1.26-linux-x86_64.tar.zst",
+              "sha256": "7dee79d47527b3e34aac7c8b2b23cc7dc2a738a45339db1e6d53027a430f8c0f",
+              "key_id": "prod-1",
+              "size": 4608357
             }
           ]
         }
