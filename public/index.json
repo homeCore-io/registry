@@ -149,19 +149,6 @@
       "category": "Hubs",
       "versions": [
         {
-          "version": "0.1.12",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-isy-v0.1.12/plugin.isy-0.1.12-linux-x86_64.tar.zst",
-              "sha256": "e8cace3612422865c72db5c5f34f52646da731395a30477022c821f47a6db7ee",
-              "key_id": "prod-1",
-              "size": 3748050
-            }
-          ]
-        },
-        {
           "version": "0.1.13",
           "artifacts": [
             {
@@ -184,6 +171,19 @@
               "sha256": "7719bcec463b6043a390a6e425ea67ba7752a59655dc3368a8d8b0a4c560b3eb",
               "key_id": "prod-1",
               "size": 3784974
+            }
+          ]
+        },
+        {
+          "version": "0.1.15",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-isy-v0.1.15/plugin.isy-0.1.15-linux-x86_64.tar.zst",
+              "sha256": "98529009d2d57bff17d343dcce3057ea6fbe703795d57eeba6207cdfd3d58c52",
+              "key_id": "prod-1",
+              "size": 3815917
             }
           ]
         }
