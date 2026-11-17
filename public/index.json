@@ -8,19 +8,6 @@
       "category": "Lighting",
       "versions": [
         {
-          "version": "0.1.15",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-caseta-v0.1.15/plugin.caseta-0.1.15-linux-x86_64.tar.zst",
-              "sha256": "7d770fabdfff4b5820dee39b867c6c15c2c72513c3ad71dd2eb4efcf511eb75b",
-              "key_id": "prod-1",
-              "size": 2082872
-            }
-          ]
-        },
-        {
           "version": "0.1.16",
           "artifacts": [
             {
@@ -43,6 +30,19 @@
               "sha256": "c469ab0d31e518e8aec5379be013f6359013a3b7684524512bb7145499e8dbd9",
               "key_id": "prod-1",
               "size": 2126844
+            }
+          ]
+        },
+        {
+          "version": "0.1.18",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-caseta-v0.1.18/plugin.caseta-0.1.18-linux-x86_64.tar.zst",
+              "sha256": "66ba4173e1133dd4eefc734ca142256fdfb96bec8afa46d453aaf9ec80cd8dfb",
+              "key_id": "prod-1",
+              "size": 2143577
             }
           ]
         }
