@@ -243,32 +243,6 @@
       "category": "Tools",
       "versions": [
         {
-          "version": "0.1.1",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "aarch64",
-              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.1/plugin.mcp-0.1.1-python-cp312-manylinux_2_28-aarch64.tar.zst",
-              "sha256": "d48a574da922bd1377043382b2b87c3158703057d9ac61423d067a11f841b2b3",
-              "key_id": "prod-1",
-              "size": 12515873,
-              "runtime": "python",
-              "abi": "cp312-manylinux_2_28"
-            },
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.1/plugin.mcp-0.1.1-python-cp312-manylinux_2_28-x86_64.tar.zst",
-              "sha256": "d7a5b47061f66d71c5e1d59a526d5001f317cab27341830f97b9c0e4c18fc544",
-              "key_id": "prod-1",
-              "size": 12661039,
-              "runtime": "python",
-              "abi": "cp312-manylinux_2_28"
-            }
-          ],
-          "min_core": "0.1.110"
-        },
-        {
           "version": "0.1.2",
           "artifacts": [
             {
@@ -313,6 +287,21 @@
               "sha256": "26a1a6943a07ad4703fde4e6cecd9923d7167741156d96ba4fe58c6869604286",
               "key_id": "prod-1",
               "size": 12757205,
+              "runtime": "python",
+              "abi": "cp312-manylinux_2_28"
+            }
+          ]
+        },
+        {
+          "version": "0.1.4",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.4/plugin.mcp-0.1.4-python-cp312-manylinux_2_28-x86_64.tar.zst",
+              "sha256": "18e285a6bfb9e27645c0646ff11dea38f5bc3f16230b8f222d8b40fb868f2e86",
+              "key_id": "prod-1",
+              "size": 12758081,
               "runtime": "python",
               "abi": "cp312-manylinux_2_28"
             }
