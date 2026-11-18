@@ -420,19 +420,6 @@
       "category": "Security",
       "versions": [
         {
-          "version": "0.1.4",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-reolink-v0.1.4/plugin.reolink-0.1.4-linux-x86_64.tar.zst",
-              "sha256": "0846a7eb27e2daf9987bcee2432cf0ca809f7c1c65f1a018a2d0f930663ba1f1",
-              "key_id": "prod-1",
-              "size": 3769969
-            }
-          ]
-        },
-        {
           "version": "0.1.5",
           "artifacts": [
             {
@@ -455,6 +442,19 @@
               "sha256": "87410e0cd98ac4d14f5d10390ee047dae435ab5f6b03b72f14532c337ed21b11",
               "key_id": "prod-1",
               "size": 3794946
+            }
+          ]
+        },
+        {
+          "version": "0.1.7",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-reolink-v0.1.7/plugin.reolink-0.1.7-linux-x86_64.tar.zst",
+              "sha256": "307b68cd77fc0cf63aa5d832b3d44bc979472e08550b0dcb3c29390f5dabd855",
+              "key_id": "prod-1",
+              "size": 3822744
             }
           ]
         }
