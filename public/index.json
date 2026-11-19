@@ -789,5 +789,19 @@
         }
       ]
     }
+  ],
+  "interpreters": [
+    {
+      "kind": "python",
+      "version": "3.12.16",
+      "abi": "cp312",
+      "os": "linux",
+      "arch": "x86_64",
+      "url": "https://github.com/homeCore-io/interpreters/releases/download/python-3.12.16/python-3.12.16-linux-x86_64.tar.zst",
+      "sha256": "21176993d1fa9bea9a7edd5f6f19de621b615c580be47298e688f98be1aa4cfa",
+      "size": 13275385,
+      "key_id": "prod-1",
+      "upstream": "20261110"
+    }
   ]
 }
