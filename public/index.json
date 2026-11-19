@@ -814,6 +814,18 @@
       "size": 13840007,
       "key_id": "prod-1",
       "upstream": "20261110"
+    },
+    {
+      "kind": "python",
+      "version": "3.14.10",
+      "abi": "cp314",
+      "os": "linux",
+      "arch": "x86_64",
+      "url": "https://github.com/homeCore-io/interpreters/releases/download/python-3.14.10/python-3.14.10-linux-x86_64.tar.zst",
+      "sha256": "15078e895b94847dbfe4d7d3935add9eaac1259b2350bdfd95fd65005db07e4e",
+      "size": 14323565,
+      "key_id": "prod-1",
+      "upstream": "20261110"
     }
   ]
 }
