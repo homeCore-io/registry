@@ -1,0 +1,125 @@
+name: Publish interpreter to registry
+
+# Add/replace one interpreter in index.json's `interpreters` list, sign it, and
+# commit. Called two ways:
+#   - repository_dispatch(publish-interpreter) from a homeCore-io/interpreters
+#     release, or
+#   - workflow_dispatch (manual) with the same fields.
+# See publish.yml for why there is no concurrency group, and why the commit
+# step re-applies onto the fetched index instead of rebasing.
+on:
+  workflow_dispatch:
+    inputs:
+      kind: { description: 'Interpreter kind', default: 'python' }
+      version: { description: 'e.g. 3.13.18', required: true }
+      abi: { description: 'e.g. cp313', required: true }
+      os: { description: 'linux', default: 'linux' }
+      arch: { description: 'x86_64 | aarch64', default: 'x86_64' }
+      url: { description: 'Download URL (GH release asset)', required: true }
+      sha256: { description: 'Hex sha256 of the file', required: true }
+      size: { description: 'Size in bytes', default: '0' }
+      upstream: { description: 'python-build-standalone release it came from', default: '' }
+      eol: { description: 'The minor gets no more fixes', type: boolean, default: false }
+  repository_dispatch:
+    types: [publish-interpreter]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet cryptography
+
+      - name: Resolve inputs (dispatch vs manual)
+        id: in
+        env:
+          EV: ${{ github.event_name }}
+          P: ${{ toJson(github.event.client_payload) }}
+          IN_KIND: ${{ inputs.kind }}
+          IN_VERSION: ${{ inputs.version }}
+          IN_ABI: ${{ inputs.abi }}
+          IN_OS: ${{ inputs.os }}
+          IN_ARCH: ${{ inputs.arch }}
+          IN_URL: ${{ inputs.url }}
+          IN_SHA256: ${{ inputs.sha256 }}
+          IN_SIZE: ${{ inputs.size }}
+          IN_UPSTREAM: ${{ inputs.upstream }}
+          IN_EOL: ${{ inputs.eol }}
+        run: |
+          set -euo pipefail
+          if [ "$EV" = "repository_dispatch" ]; then
+            get() { printf '%s' "$P" | python3 -c "import json,sys;v=json.load(sys.stdin).get(sys.argv[1]);print('' if v is None else str(v))" "$1"; }
+            kind=$(get kind); version=$(get version); abi=$(get abi)
+            os=$(get os); arch=$(get arch); url=$(get url)
+            sha256=$(get sha256); size=$(get size); upstream=$(get upstream); eol=$(get eol)
+          else
+            kind="$IN_KIND"; version="$IN_VERSION"; abi="$IN_ABI"
+            os="$IN_OS"; arch="$IN_ARCH"; url="$IN_URL"
+            sha256="$IN_SHA256"; size="$IN_SIZE"; upstream="$IN_UPSTREAM"; eol="$IN_EOL"
+          fi
+          kind="${kind:-python}"; os="${os:-linux}"; eol="${eol:-false}"
+          [ -n "$version" ] && [ -n "$abi" ] && [ -n "$arch" ] && [ -n "$url" ] && [ -n "$sha256" ] || {
+            echo "::error::version, abi, arch, url and sha256 are required"; exit 1; }
+          for k in kind version abi os arch url sha256 size upstream eol; do
+            printf '%s=%s\n' "$k" "${!k}" >> "$GITHUB_OUTPUT"
+          done
+
+      - name: Update, sign and commit the index
+        env:
+          REGISTRY_SECRET_KEY: ${{ secrets.REGISTRY_SECRET_KEY }}
+          KIND: ${{ steps.in.outputs.kind }}
+          VERSION: ${{ steps.in.outputs.version }}
+          ABI: ${{ steps.in.outputs.abi }}
+          OS_: ${{ steps.in.outputs.os }}
+          ARCH: ${{ steps.in.outputs.arch }}
+          URL: ${{ steps.in.outputs.url }}
+          SHA256: ${{ steps.in.outputs.sha256 }}
+          SIZE: ${{ steps.in.outputs.size }}
+          UPSTREAM: ${{ steps.in.outputs.upstream }}
+          EOL: ${{ steps.in.outputs.eol }}
+        run: |
+          set -euo pipefail
+          git config user.name  "homecore-registry[bot]"
+          git config user.email "registry@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            python scripts/update-interpreters.py public/index.json \
+              "$KIND" "$VERSION" "$ABI" "$OS_" "$ARCH" "$URL" "$SHA256" "$SIZE" "$UPSTREAM" "$EOL" --keep 3
+            python scripts/sign-index.py public/index.json
+            git add public/index.json public/index.json.sig
+            if git diff --cached --quiet; then
+              echo "index already carries this interpreter, nothing to do"
+              exit 0
+            fi
+            git commit -q -m "registry: ${KIND} ${VERSION} (${OS_}/${ARCH})"
+            if git push -q; then
+              echo "index updated on attempt ${attempt}"
+              exit 0
+            fi
+            echo "::notice::push rejected (attempt ${attempt}); re-applying onto the current index"
+            git reset --hard HEAD~1
+            git fetch -q origin "${GITHUB_REF_NAME:-main}"
+            git reset --hard "origin/${GITHUB_REF_NAME:-main}"
+            sleep $(( attempt * 3 ))
+          done
+          echo "::error::could not update the index after 5 attempts; re-run this workflow"
+          exit 1
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+
+      - name: Deploy Pages
+        id: deploy
+        uses: actions/deploy-pages@v5

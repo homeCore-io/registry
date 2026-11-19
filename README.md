@@ -44,6 +44,29 @@ same fields.
 The signature is over the **raw bytes** of `index.json` — never reformat it
 between signing and serving, or verification fails.
 
+## Interpreters
+
+`index.json` also lists the interpreters plugin runtimes run plugins on, built
+by [homeCore-io/interpreters](https://github.com/homeCore-io/interpreters). A
+Python plugin package's `abi` (`cp313-manylinux_2_28`) names the series it needs
+(`cp313`); homeCore picks the newest patch of it listed here and the runtime
+fetches it through homeCore.
+
+```json
+{ "schema": "1", "plugins": [ … ],
+  "interpreters": [
+    { "kind": "python", "version": "3.13.18", "abi": "cp313", "os": "linux",
+      "arch": "x86_64", "url": "…", "sha256": "…", "size": 13000000,
+      "key_id": "prod-1", "upstream": "20261110" } ] }
+```
+
+`eol: true` marks a minor Python no longer fixes. The newest three patches of
+each series stay listed. An interpreters release fires
+`repository_dispatch(publish-interpreter)` with
+`{kind, version, abi, os, arch, url, sha256, size, upstream, eol}`; the
+`publish-interpreter` workflow indexes, signs and commits it. Manual:
+**Actions → "Publish interpreter to registry"**.
+
 ## UI extensions (`extensions.json`)
 
 The web app's UI extensions (drawings and cards its looks can choose, from the
