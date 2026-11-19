@@ -802,6 +802,18 @@
       "size": 13275385,
       "key_id": "prod-1",
       "upstream": "20261110"
+    },
+    {
+      "kind": "python",
+      "version": "3.13.18",
+      "abi": "cp313",
+      "os": "linux",
+      "arch": "x86_64",
+      "url": "https://github.com/homeCore-io/interpreters/releases/download/python-3.13.18/python-3.13.18-linux-x86_64.tar.zst",
+      "sha256": "d8c7aedc0b46d30fe218f82441515a95dc2c10e61dca6326703d3119aeb2bc47",
+      "size": 13840007,
+      "key_id": "prod-1",
+      "upstream": "20261110"
     }
   ]
 }
