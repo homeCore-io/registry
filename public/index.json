@@ -826,6 +826,18 @@
       "size": 14323565,
       "key_id": "prod-1",
       "upstream": "20261110"
+    },
+    {
+      "kind": "python",
+      "version": "3.15.2",
+      "abi": "cp315",
+      "os": "linux",
+      "arch": "x86_64",
+      "url": "https://github.com/homeCore-io/interpreters/releases/download/python-3.15.2/python-3.15.2-linux-x86_64.tar.zst",
+      "sha256": "8100898251596f032b423d824d513018176fa100fa56b2f9b1c79e5707ba702f",
+      "size": 15076978,
+      "key_id": "prod-1",
+      "upstream": "20261110"
     }
   ]
 }
