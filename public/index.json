@@ -297,6 +297,16 @@
           "artifacts": [
             {
               "os": "linux",
+              "arch": "aarch64",
+              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.5/plugin.mcp-0.1.5-python-cp315-manylinux_2_28-aarch64.tar.zst",
+              "sha256": "7bb977d4c2f1b3fae72eafb8356d9bc02a4afaceea98f49ab2e0102cd661120d",
+              "key_id": "prod-1",
+              "size": 12800026,
+              "runtime": "python",
+              "abi": "cp315-manylinux_2_28"
+            },
+            {
+              "os": "linux",
               "arch": "x86_64",
               "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.5/plugin.mcp-0.1.5-python-cp315-manylinux_2_28-x86_64.tar.zst",
               "sha256": "4be2acc3958c383961fcf3c979a1c2bf5e0e4e3609bba4367c2d6c36c4b65cfb",
