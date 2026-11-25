@@ -243,31 +243,6 @@
       "category": "Tools",
       "versions": [
         {
-          "version": "0.1.2",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "aarch64",
-              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.2/plugin.mcp-0.1.2-python-cp312-manylinux_2_28-aarch64.tar.zst",
-              "sha256": "cc51814f08771c2ec1d8fb62a5105c81cc2f6bbf912aa8f3ae1aeb68a9b53e60",
-              "key_id": "prod-1",
-              "size": 12515872,
-              "runtime": "python",
-              "abi": "cp312-manylinux_2_28"
-            },
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.2/plugin.mcp-0.1.2-python-cp312-manylinux_2_28-x86_64.tar.zst",
-              "sha256": "d9128484ceffb4ccbf51a88890e5e3e2f2e09123e46c99c567d31ebaf723ff9b",
-              "key_id": "prod-1",
-              "size": 12663965,
-              "runtime": "python",
-              "abi": "cp312-manylinux_2_28"
-            }
-          ]
-        },
-        {
           "version": "0.1.3",
           "artifacts": [
             {
@@ -314,6 +289,21 @@
               "size": 12758081,
               "runtime": "python",
               "abi": "cp312-manylinux_2_28"
+            }
+          ]
+        },
+        {
+          "version": "0.1.5",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/hc-mcp/releases/download/v0.1.5/plugin.mcp-0.1.5-python-cp315-manylinux_2_28-x86_64.tar.zst",
+              "sha256": "4be2acc3958c383961fcf3c979a1c2bf5e0e4e3609bba4367c2d6c36c4b65cfb",
+              "key_id": "prod-1",
+              "size": 12990686,
+              "runtime": "python",
+              "abi": "cp315-manylinux_2_28"
             }
           ]
         }
