@@ -17,8 +17,8 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
+  # To start pages.yml.
+  actions: write
 
 # No concurrency group, for the reason publish.yml gives: the write step
 # re-applies onto the current index and retries instead.
@@ -26,9 +26,6 @@ permissions:
 jobs:
   prune:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -78,13 +75,13 @@ jobs:
           echo "::error::could not write the index after 5 attempts; run this again"
           exit 1
 
-      - name: Upload Pages artifact
+      # pages.yml deploys. A push made with GITHUB_TOKEN doesn't start it
+      # (GitHub's recursion guard) but a dispatch does. Deploying inline
+      # failed whenever deploy-pages couldn't yet see the artifact uploaded a
+      # second before, and a re-run then always failed: every attempt leaves
+      # another github-pages artifact, and deploy-pages refuses two.
+      - name: Hand the deploy to pages.yml
         if: ${{ inputs.apply && steps.write.outputs.changed == 'true' }}
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: public
-
-      - name: Deploy Pages
-        id: deploy
-        if: ${{ inputs.apply && steps.write.outputs.changed == 'true' }}
-        uses: actions/deploy-pages@v5
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main

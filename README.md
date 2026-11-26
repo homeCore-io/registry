@@ -24,7 +24,10 @@ A plugin release uploads its `tar.zst` as a GitHub Release asset, then fires a
 `repository_dispatch(publish-plugin)` at this repo with
 `{id, name, version, os, arch, url, sha256, size?, min_core?}`. The `publish`
 workflow adds/replaces that `(id, version, os, arch)` entry in `index.json`,
-signs it, and commits — Pages redeploys on push.
+signs it, commits, and starts the `pages` workflow, which deploys `public/`
+from `main`. (A push made with the workflow's own token doesn't start it.) If
+the index is right on `main` but not served, run **Actions → "Deploy registry
+to Pages"**.
 
 Manual publish: **Actions → "Publish plugin to registry" → Run workflow** with the
 same fields.
