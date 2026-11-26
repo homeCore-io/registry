@@ -237,39 +237,6 @@
       ]
     },
     {
-      "id": "plugin.matter",
-      "name": "Matter",
-      "description": "Matter devices in homeCore, through the Open Home Foundation Matter server",
-      "category": "Devices",
-      "versions": [
-        {
-          "version": "0.3.0",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "aarch64",
-              "url": "https://github.com/homeCore-io/hc-matter/releases/download/v0.3.0/plugin.matter-0.3.0-node-node24-glibc_2_28.tar.zst",
-              "sha256": "63aaf7d825918a1e20ed43031d9fc476c434c227e45d3d73955876417fbcf733",
-              "key_id": "prod-1",
-              "size": 10277903,
-              "runtime": "node",
-              "abi": "node24-glibc_2_28"
-            },
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-matter/releases/download/v0.3.0/plugin.matter-0.3.0-node-node24-glibc_2_28.tar.zst",
-              "sha256": "63aaf7d825918a1e20ed43031d9fc476c434c227e45d3d73955876417fbcf733",
-              "key_id": "prod-1",
-              "size": 10277903,
-              "runtime": "node",
-              "abi": "node24-glibc_2_28"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "plugin.mcp",
       "name": "Assistant",
       "description": "A chat in homeCore: ask about the house and set up automations, using Claude",
