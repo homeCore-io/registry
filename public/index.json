@@ -55,19 +55,6 @@
       "category": "Weather",
       "versions": [
         {
-          "version": "0.1.25",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.25/plugin.ecowitt-0.1.25-linux-x86_64.tar.zst",
-              "sha256": "c07a36484a163c37c7f005d217dff0cd4b86dd595b183c6459f7f9d8466a2941",
-              "key_id": "prod-1",
-              "size": 4131455
-            }
-          ]
-        },
-        {
           "version": "0.1.26",
           "artifacts": [
             {
@@ -90,6 +77,19 @@
               "sha256": "4981db496c776422158e91cc9ebf5f0dcc204294b8b9a12cf02fcb4003aee5c4",
               "key_id": "prod-1",
               "size": 4167027
+            }
+          ]
+        },
+        {
+          "version": "0.1.28",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "x86_64",
+              "url": "https://github.com/homeCore-io/homeCore/releases/download/hc-ecowitt-v0.1.28/plugin.ecowitt-0.1.28-linux-x86_64.tar.zst",
+              "sha256": "1e62e56b1631350bf51f8e85c75deddf5b7717b5013e2f1057e7f8df6b750cb6",
+              "key_id": "prod-1",
+              "size": 4201525
             }
           ]
         }
