@@ -796,6 +796,18 @@
       "version": "24.22.3",
       "abi": "node24",
       "os": "linux",
+      "arch": "aarch64",
+      "url": "https://github.com/homeCore-io/interpreters/releases/download/node-24.22.3/node-24.22.3-linux-aarch64.tar.zst",
+      "sha256": "3d274266564812620f31ed39bf7db842e49f1b24ea4e78db8476787ccbd2711f",
+      "size": 33026962,
+      "key_id": "prod-1",
+      "upstream": "v24.22.3"
+    },
+    {
+      "kind": "node",
+      "version": "24.22.3",
+      "abi": "node24",
+      "os": "linux",
       "arch": "x86_64",
       "url": "https://github.com/homeCore-io/interpreters/releases/download/node-24.22.3/node-24.22.3-linux-x86_64.tar.zst",
       "sha256": "19903e5bb5d255a4607d52ff32d3989192970900ebe097e3dee097624633f108",
