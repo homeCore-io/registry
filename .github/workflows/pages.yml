@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy-again.outputs.page_url }}
     steps:
       # main as it is now, not the commit this run was started at: the publish
       # workflows start it after each push, and when several publish at once
@@ -36,5 +36,15 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: public
+      # deploy-pages sometimes can't yet see the artifact uploaded a second
+      # earlier ("No artifacts named github-pages", 2026-11-25 and -26), and a
+      # re-run of the run then fails on two artifacts. So wait and try once
+      # more here, in the same run, with the same artifact.
       - id: deploy
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+      - if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+      - id: deploy-again
+        if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v5
