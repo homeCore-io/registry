@@ -247,6 +247,16 @@
           "artifacts": [
             {
               "os": "linux",
+              "arch": "aarch64",
+              "url": "https://github.com/homeCore-io/hc-matter/releases/download/v0.1.0/plugin.matter-0.1.0-node-node24-glibc_2_28.tar.zst",
+              "sha256": "b12ef5447652d97180842662ea268c913e6f077a6c45071d5bc4ccae4c11ec6b",
+              "key_id": "prod-1",
+              "size": 10278455,
+              "runtime": "node",
+              "abi": "node24-glibc_2_28"
+            },
+            {
+              "os": "linux",
               "arch": "x86_64",
               "url": "https://github.com/homeCore-io/hc-matter/releases/download/v0.1.0/plugin.matter-0.1.0-node-node24-glibc_2_28.tar.zst",
               "sha256": "b12ef5447652d97180842662ea268c913e6f077a6c45071d5bc4ccae4c11ec6b",
