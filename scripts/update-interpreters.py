@@ -43,8 +43,17 @@ def main():
     ap.add_argument("--keep", type=int, default=3)
     a = ap.parse_args()
 
-    if not re.fullmatch(r"[a-z][a-z0-9-]*", a.kind):
-        sys.exit(f"kind `{a.kind}` must be lowercase letters, digits and dashes")
+    # The same rule homeCore applies to a runtime kind.
+    if not re.fullmatch(r"[a-z][a-z0-9]*", a.kind):
+        sys.exit(f"kind `{a.kind}` must be lowercase letters and digits, starting with a letter")
+    if not re.fullmatch(r"[a-z]+[0-9]+", a.abi):
+        sys.exit(f"abi `{a.abi}` must be a series such as cp313 or node24")
+    if a.kind == "node":
+        m = re.fullmatch(r"(\d+)\.\d+\.\d+", a.version)
+        if not m:
+            sys.exit(f"a node interpreter's version is a release like 24.22.3, not {a.version}")
+        if a.abi != f"node{m.group(1)}":
+            sys.exit(f"Node.js {a.version} is abi node{m.group(1)}, not {a.abi}")
     if a.kind == "python":
         m = re.fullmatch(r"3\.(\d+)\.\d+", a.version)
         if not m:

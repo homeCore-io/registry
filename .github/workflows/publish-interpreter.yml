@@ -12,13 +12,13 @@ on:
     inputs:
       kind: { description: 'Interpreter kind', default: 'python' }
       version: { description: 'e.g. 3.13.18', required: true }
-      abi: { description: 'e.g. cp313', required: true }
+      abi: { description: 'The series, e.g. cp313 or node24', required: true }
       os: { description: 'linux', default: 'linux' }
       arch: { description: 'x86_64 | aarch64', default: 'x86_64' }
       url: { description: 'Download URL (GH release asset)', required: true }
       sha256: { description: 'Hex sha256 of the file', required: true }
       size: { description: 'Size in bytes', default: '0' }
-      upstream: { description: 'python-build-standalone release it came from', default: '' }
+      upstream: { description: 'Upstream release it came from (python-build-standalone release, or the Node.js version)', default: '' }
       eol: { description: 'The minor gets no more fixes', type: boolean, default: false }
   repository_dispatch:
     types: [publish-interpreter]
