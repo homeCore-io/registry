@@ -796,6 +796,18 @@
       "version": "26.13.1",
       "abi": "node26",
       "os": "linux",
+      "arch": "aarch64",
+      "url": "https://github.com/homeCore-io/interpreters/releases/download/node-26.13.1/node-26.13.1-linux-aarch64.tar.zst",
+      "sha256": "9c28e4c3fc4d327bc02f185fc85ad2bcd2d3adaaa5014d76ee23d5de3f807e3e",
+      "size": 35286623,
+      "key_id": "prod-1",
+      "upstream": "v26.13.1"
+    },
+    {
+      "kind": "node",
+      "version": "26.13.1",
+      "abi": "node26",
+      "os": "linux",
       "arch": "x86_64",
       "url": "https://github.com/homeCore-io/interpreters/releases/download/node-26.13.1/node-26.13.1-linux-x86_64.tar.zst",
       "sha256": "b6815e8e42701391c9d6ebe38df9e0c5e58110c48f43ebfc952f1516f8ab2d5c",
