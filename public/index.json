@@ -243,31 +243,6 @@
       "category": "Devices",
       "versions": [
         {
-          "version": "0.1.0",
-          "artifacts": [
-            {
-              "os": "linux",
-              "arch": "aarch64",
-              "url": "https://github.com/homeCore-io/hc-matter/releases/download/v0.1.0/plugin.matter-0.1.0-node-node24-glibc_2_28.tar.zst",
-              "sha256": "b12ef5447652d97180842662ea268c913e6f077a6c45071d5bc4ccae4c11ec6b",
-              "key_id": "prod-1",
-              "size": 10278455,
-              "runtime": "node",
-              "abi": "node24-glibc_2_28"
-            },
-            {
-              "os": "linux",
-              "arch": "x86_64",
-              "url": "https://github.com/homeCore-io/hc-matter/releases/download/v0.1.0/plugin.matter-0.1.0-node-node24-glibc_2_28.tar.zst",
-              "sha256": "b12ef5447652d97180842662ea268c913e6f077a6c45071d5bc4ccae4c11ec6b",
-              "key_id": "prod-1",
-              "size": 10278455,
-              "runtime": "node",
-              "abi": "node24-glibc_2_28"
-            }
-          ]
-        },
-        {
           "version": "0.1.1",
           "artifacts": [
             {
@@ -312,6 +287,21 @@
               "sha256": "bc0e08450c1f54f98c1ea9acb3e082d5f49180db868ce9e3d6f08a86111fb678",
               "key_id": "prod-1",
               "size": 10305384,
+              "runtime": "node",
+              "abi": "node24-glibc_2_28"
+            }
+          ]
+        },
+        {
+          "version": "0.1.3",
+          "artifacts": [
+            {
+              "os": "linux",
+              "arch": "aarch64",
+              "url": "https://github.com/homeCore-io/hc-matter/releases/download/v0.1.3/plugin.matter-0.1.3-node-node24-glibc_2_28.tar.zst",
+              "sha256": "d680b6b33e406b46faba95f2fd1d011cdc12d07f7937f890a0b64b185247e7b7",
+              "key_id": "prod-1",
+              "size": 10316099,
               "runtime": "node",
               "abi": "node24-glibc_2_28"
             }
